@@ -11,9 +11,6 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-#Objective
-Describe Adrian 
-
 ## Info
 
 Graduate Research Assisstant
