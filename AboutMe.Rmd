@@ -1,0 +1,40 @@
+---
+title: "BIO381 - About Me"
+author: "Adrian Wiegman"
+date: "January 23, 2018"
+output:
+  prettydoc::html_pretty:
+    theme: Cayman
+    highlight: github
+---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Info
+
+Graduate Research Assisstant
+
+*Affiluations:*
+University of Vermont
+  - Rubenstein School for Environment and Natural Resources
+  - Gund Institute for Environment
+  - Nutrient Cycling and Ecological Design Lab
+
+*Office:* 
+2nd Floor, Johnson House 617 Main Street, Burlington VT
+
+*Email:* 
+adrian.wiegman@gmail.com
+
+## Bio
+
+Adrian is a PhD student in the Nutrient Cycling and Ecological Design Lab at UVM. His current research is focused on quantifying energy, material, and financial tradeoffs of organic waste management. This research is motivated by the societal need to establish a circular phosphorus fertilizer system for long term sustainability of agriculture. Adrian is broadly interested in integrating natural systems science with economics in order to guide sustainable natural resource policy and management.
+
+
+<img src="Adrian.jpg" width="400" height="200" />
+
+## Find Adrian Around the Web 
+- [**ResearchGate**](https://www.researchgate.net/profile/Adrian_Wiegman)
+- [**Gund Institute**](https://www.uvm.edu/gund/profiles/adrian-wiegman)
+- [**Nutrient Cycling and Ecological Design Lab**](http://nced.weebly.com/team.html)
