@@ -1,5 +1,5 @@
 ---
-title: "BIO381 - About Me"
+title: "BIO381 - Webpage"
 author: "Adrian Wiegman"
 date: "January 23, 2018"
 output:
@@ -10,6 +10,8 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+## Homework
+[Homework 2](HW2_flowchart.html)
 
 ## Info
 
