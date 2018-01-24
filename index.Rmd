@@ -11,7 +11,7 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ## Homework
-[Homework 2](HW2_flowchart.html)
+[Homework 2](homework02.html)
 
 ## Info
 
