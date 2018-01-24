@@ -3,7 +3,8 @@ HW#2
 Adrian Wiegman
 1/24/2018
 
-#FlowCharts with Markdown
+##Assignment
+Produce 2 diagrams based on your thesis research and publish them on a markdown webpage ([instructions linked here](https://gotellilab.github.io/Bio381/Homeworks/Homework02.html))
 
 
 ##Research Overview
@@ -73,38 +74,7 @@ graph LR
 ```
 
 
-##Examples
-**sequence**
-```sequence
-Alice->Bob: Hello Bob, how are you?
-Note right of Bob: Bob thinks
-Bob-->Alice: I am good thanks!
-```
-**flow**
-```flow
-st=>start: Start
-op=>operation: Your Operation
-cond=>condition: Yes or No?
-e=>end
-
-st->op->cond
-cond(yes)->e
-cond(no)->op
-```
-**Mermaid**
+##Flowchart Examples
 [mermaid documentation](https://mermaidjs.github.io/)
-[Additional mermaid examples](https://mermaidjs.github.io/flowchart.html)
-```mermaid
-%% Example of sequence diagram
-  sequenceDiagram
-    Alice->>Bob: Hello Bob, how are you?
-    alt is sick
-    Bob->>Alice: Not so good :(
-    else is well
-    Bob->>Alice: Feeling fresh like a daisy
-    end
-    opt Extra response
-    Bob->>Alice: Thanks for asking
-    end
-```
+[additional mermaid examples](https://mermaidjs.github.io/flowchart.html)
 [more examples here](http://support.typora.io/Draw-Diagrams-With-Markdown/)
