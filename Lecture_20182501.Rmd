@@ -1,0 +1,55 @@
+---
+title: "Lecture 3"
+author: "Adrian Wiegman"
+date: "January 25, 2018"
+output: 
+  html_document: 
+    css: C:/Program Files/Typora/resources/app/style/themes/github.css
+    keep_md: yes
+    theme: spacelab
+---
+
+
+```{r setup, include=FALSE}
+#local R code chunks options are controlled above 
+#knitr global options are controlled below
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## More LaTex Tricks
+
+### Summation
+$$\sum_{i=1}^S{n_i}=N$$
+
+### Sentence text
+
+$$p(\mbox{occurance of species X})=0.67$$
+
+### What about printing a backslash
+
+$$\backslash a \le b \backslash$$
+
+Rendering code of \LaTeX
+
+using "ctrl alt i" creates an R code chunk
+
+`echo=TRUE` prints the R code in the html, FALSE hides the R code
+`eval=FALSE` prevents a code from executing
+`message=FALSE`
+```{r,echo=FALSE} 
+library(ggplot2)
+waterTemp <-runif(50) # cammel hump cammelHump naming convention
+planktonAbun <- runif(50)
+# qplot does not require a dataframe
+qplot(x=waterTemp, y=planktonAbun)
+# assigning x and y equal sign 
+# print(waterTemp) #print statement
+# head(waterTemp) # prints first six elements of a vector
+# use "ctrl shift c" to insert/remove # before selected lines
+```
+Now we can add text here, say anything we want, etc. in the new chunk belo has access to the memory from all the chunks above. 
+```{r, echo=TRUE,eval=TRUE,message=FALSE}
+qplot(x=waterTemp)
+```
+
+
