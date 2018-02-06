@@ -48,6 +48,7 @@ graph TD
 	2 --> 2b[not significant]
 		2b --> 4[4. return variable and stop analysis]
 		4 --> 5[final model]
+end
 ```
 ```mermaid
 graph LR
