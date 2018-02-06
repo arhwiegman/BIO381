@@ -16,7 +16,7 @@ print(x)
 y = 4 #legal but not used except in functions
 y = y + 1.1 #
 plantHeight <- 5.5
-#-------------------(end Jan 30 class)
+#____________________(end Jan 30 class)
 
 #the combine function c()
 z <- c(3,3,3,10) # simple atomic vector, vars are read in as double or real
@@ -153,7 +153,110 @@ myNames <- paste("File",seq(1:length(myVector)),".txt",sep="")
 names(myVector) <- myNames
 head(myVector)
 
-#using rep to repeat elements and create vectors
-# use the "Help" in the lower right pane to search functions
-#___________________________
+#_________________(end Feb 1 class)
 
+#
+#using "rep" to repeat elements and create vectors
+# use the "Help" in the lower right pane to search functions
+rep(0.5,6) #repeats element x 0.5, 6 times)
+rep(x=0.5,times=6)
+rep(times=6,x=0.5) #works forward and backward if elements are named properly
+myVec <- c(1,2,3)
+rep(myVec,times=2) # repeats entire vector twice
+rep(x=myVec,each=2) #repeats each element in the vector twice 
+rep(x=myVec,times=myVec) #matches up nth element in vectors and repeats that many times
+rep(x=1:3,times=3:1)
+
+#"seq" for creating sequences
+seq(from=2,to=4) #analogous to do loops
+seq(from=3,to=30,by=6)
+seq(1,100,10)
+seq(from=1,to=100,length=20) #length divides into equal intervals that total to the specified lenght, 99/20 = interval
+
+x <- seq(from=2,to=4,lenght=7)
+1:length(x) #lists the element number, slow because : is a function
+seq_along(x) #faster
+n = 100
+seq_len(n) #creats a vector of length n listing the element number from 1 to n
+str(x)
+x<- NULL
+1:length(x) #this goes from 1 to 0
+seq_along(x) #this gives you 0
+
+#using random numbers
+runif(1) #randum uniform number ranging between zero and 1 
+set.seed(100) # sets the random number sequence 
+runif(1) #this value will now be the same if 
+set.seed(100) # sets the random number sequence 
+runif(n=5,min=100,max=200) #a vector lenth = 5, between 100 and 200
+#set.seed must be run on the line before the random number command to have same number
+set.seed(100) 
+z <- runif(n=1000,min=30,max=300)
+qplot(x=z)
+
+#random normal values
+z <-rnorm(1000)
+z <-rnorm(n=100000, mean=50, sd=20)
+qplot(x=z)
+
+#use "sample" to pull values from an existing vector
+longVec <- seq_len(10)
+sample(x=longVec) #shuffles the values in a vector, gives random order
+sample(x=longVec,size=3) #samples without replacement
+sample(x=longVec,size=3,replace=TRUE) #random sample with replacement
+myWeights <- c(rep(20,5),rep(100,5))  #must be same lenght as vector being sampled and values must be positive
+sample(x=longVec,replace=TRUE,prob=myWeights)
+
+#subsettting of atomic vectors
+z <- c(3.1,9.2,5.3,1.4,0.5)
+#four ways to subset
+#subest on positive index values
+z[5] #returns the nth element of z
+z[c(1,3)] # returns the 1st and 3rd element of z
+
+#subset on negative index values (subtracting elements)
+z[-c(2,4)] # returns all elements except for 2 and 4
+
+#subet by creating a boolean vector to select elements that meet a condition
+z<4 # returns a vector of TRUE FALSE values
+z[z<4] # returns the values of z that are less than 4
+which(x=z<4) # returns the element index number of z that are less than 4
+myCriteria <- z<4
+z[myCriteria]
+z[which(z<4)]
+zx <- c(NA,z)
+zx[zx<4] # retains the missing values, useful for working with data frames
+zx[which(zx<4)] # removes the missing values, useful for simple functions
+
+#keep enitre vector
+z[] #useful for working with matrices
+
+z[-(length(z):(length(z)-2))] #this type of codeing is good for general use with variable length vectors
+
+#subset on names of vector elements
+names(z) <-letters[(seq_along(z))]
+z
+z[c('a','b','e')] #we can only make positive selections
+
+# arithmetich operators
+10 + 3
+10 - 3
+10 * 3
+10 / 3
+10 ^ 3
+log(10) # log base e or LN
+log10(10) #log base 10 
+
+#remainder, modules operator 
+10 %% 3
+
+#integer division
+10 %/% 3
+
+#generate the set of all numbers that are divisible by nine
+q <- seq_len(100)
+q[q%%9==0]
+
+#__________________ (end of Feb 6 Lecture)
+
+#boolean or logical operators
