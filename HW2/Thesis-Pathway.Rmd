@@ -1,0 +1,202 @@
+---
+title: "Thesis Trajectories"
+author: "Adrian Wiegman"
+date: "February 13, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+library(DiagrammeR)
+#http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
+```
+
+This document outlines the trajectories that my thesis could take based on potential funding scenarios. At this time, Two major proposals could influence my research:
+
+ - 1. The North East SARE (NE-SARE)
+ - 2. The Lake Champlain Basin Foundation (LCBP)
+
+```{r}
+DiagrammeR("
+graph LR
+  A((NE_SARE))
+  A1[GHG Emissions]
+  A3[Maize Yield]
+  A2[Nutrient Leaching]
+  A4(Org. Fertilizer LCA)
+  B((LCBP))
+  B2[P Dynamics Functions]
+  B3[P Pools and Fluxes]
+  B5(Riparian P Model)
+  B4(Hydrologic Model)
+  B1[Wetland P Retention/Export]
+  D1{EcoInvent Data}
+  D2{USGS DEMs & Stream Guages}
+  M2(Watershed P Model)
+  M3(Water Quality Optimization)
+  C1>Chapter 1]
+  C2>Chapter 2]
+  C3>Chapter 3]
+  C4>Chapter 4]
+  D3{Spatial Data}
+  
+
+  D1 --> A4
+  A --> A1 
+  A --> A3
+  A --> A2
+  A1 --> A4
+  A3 --> A4
+  A2 --> A4
+
+  A2 --> M2
+  B1 --> M2
+  M2 --> C3
+  A4 --> M3
+  M2 --> M3
+  M3 --> C4
+
+  D2 --> B4
+  B --> B2
+  B --> B3
+  B --> B4
+  B2 --> B5
+  B3 --> B5
+  B4 --> B1
+  B5 --> B1
+  B2 --> C1
+  B3 --> C1
+  B5 --> C2
+  
+  D3 --> M2
+
+")
+```
+
+```{r}
+grViz("
+digraph boxes_and_circles{
+  # a 'graph' statement
+  graph [overlap = true, rankdir=TB, fontsize = 10]
+  #External Data nodes
+  node [shape = diamond,
+        fontname = Helvetica]
+  D1[label = 'EcoInvent Data']#diamond
+  D2[label = 'USGS DEMs & Stream Guages']#diamond
+  D3[label = 'Spatial Data'] #diamond
+
+  # Funded Project nodes
+  node [shape = circle,
+        fontname = Helvetica]
+  A [label = 'NE_SARE'] #Circle
+  B[label = 'LCBP'] #Circle
+
+  #Output Data nodes
+  node [shape = box,
+        fontname = Helvetica]
+  A1[label = 'GHG Emissions'] 
+  A3[label = 'Maize Yield'] 
+  A2[label = 'Nutrient Leaching'] 
+  B2[label = 'P Dynamics Functions']
+  B3[label = 'P Pools and Fluxes']
+  B1[label = 'Wetland P Retention/Export']
+  
+  #Output Model nodes
+  node [shape = egg,
+        fontname = Helvetica]
+  A4[label = 'Org. Fertilizer LCA'] #Egg
+  B5[label = 'Riparian P Model']#Egg
+  B4[label = 'Hydrologic Model']#Egg
+  M2[label = 'Watershed P Model']#egg
+  M3[label = 'Water Quality Optimization']#egg
+  
+  #Chapter nodes
+  node [shape = box, style = filled, fillcolor = yellow,
+        fontname = Helvetica]
+  C1[label = 'Chapter 1']
+  C2[label = 'Chapter 2']
+  C3[label = 'Chapter 3']
+  C4[label = 'Chapter 4']
+
+  #edge statements
+  # NE_SARE data flows
+  D1 -> A4
+  A -> A1 
+  A -> A3
+  A -> A2
+  A1 -> A4
+  A3 -> A4
+  A2 -> A4
+  # LCBP data flows 
+  A2 -> M2
+  B1 -> M2
+  M2 -> C3
+  A4 -> M3
+  M2 -> M3
+  M3 -> C4
+  #
+  D2 -> B4
+  B -> B2
+  B -> B3
+  B -> B4
+  B2 -> B5
+  B3 -> B5
+  B4 -> B1
+  B5 -> B1
+  B2 -> C1
+  B3 -> C1
+  B5 -> C2
+  D3 -> M2
+}
+")
+
+grViz("
+digraph boxes_and_circles {
+
+  # a 'graph' statement
+  graph [overlap = true, rankdir=LR, fontsize = 10]
+
+  # several 'node' statements
+  node [shape = box,
+        fontname = Helvetica]
+  A; B; C; D; E; F
+
+  node [shape = circle,
+        fixedsize = true,
+        width = 0.9] // sets as circles
+  1; 2; 3; 4; 5; 6; 7; 8
+
+  # several 'edge' statements
+  A->1 B->2 B->3 B->4 C->A
+  1->D E->A 2->4 1->5 1->F
+  E->6 4->6 5->7 6->7 3->8
+}
+")
+names <- c(5:15)
+grViz("
+digraph a_nice_graph {
+
+# node definitions with substituted label text
+node [fontname = Helvetica]
+1 [label = '@@1']
+2 [label = '@@2-1']
+c [label = '@@2-2']
+d [label = '@@2-3']
+e [label = '@@2-4']
+f [label = '@@2-5']
+g [label = '@@2-6']
+h [label = '@@2-7']
+i [label = '@@2-8']
+j [label = '@@2-9']
+
+# edge definitions with the node IDs
+1 -> {2 c d e f g h i j}
+}
+
+[1]: 'top'
+[2]: c('x','r','rg','rds','rtgh','sdf','sdf','asd',',a','asdas')
+")
+```

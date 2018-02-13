@@ -260,3 +260,33 @@ q[q%%9==0]
 #__________________ (end of Feb 6 Lecture)
 
 #boolean or logical operators
+#aka relational operators
+3>4
+3>=4
+3==4
+3==4:8 #vector form
+
+#set operators compare two atomic vectors and return one atomic vector always stip out duplicate elements
+i <- c(1,1:7)
+print(i)
+j <- 3:10
+print(j)
+#union is all of the elements
+union(i,j)  #removing duplicates
+intersect(i,j) #common elements
+setdiff(i,j) #unique elements of i not in j, an asymetric function, order of variables matters
+setdiff(j,i) #setdiff returns the elements in i are not in j 
+
+#set operators that return  a single boolean
+setequal(i,j) #i and j identical, TRUE of FALSE
+setequal(i,i)
+is.element(i,j) #says if the elements in i are contained in j, order matters
+
+#logical operators
+z <- 10:20
+z < 15
+z < 20 & z > 17 # AND operator
+z < 20 | z > 17 # OR operator
+
+#remenber atomic vectors all are the same type
+
