@@ -1,0 +1,120 @@
+---
+title: "Dissertaion Trajectories"
+author: "Adrian Wiegman"
+date: "February 14, 2018"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r, include=FALSE}
+library(DiagrammeR)
+#http://rich-iannone.github.io/DiagrammeR/graphviz_and_mermaid.html
+```
+
+## Objectives
+This document outlines the trajectories that my dissertation could take based on potential funding scenarios. At this time, two major proposals could influence my research: 
+
+1. The North East SARE (**NE-SARE**): "Quantifying phosphorus retention in restored riparian wetlands of the Lake Champlain Basin"*
+
+2. The Lake Champlain Basin Foundation (**LCBP**): "Synergistic use of recycled household and community nutrients to deliver balanced fertilization in Northeast agriculture"*
+
+I will be intimately involved with all aspects of the LCBP proposal. The major research outcomes of the LCBP proposal are data on phosphorus (P) pools and fluxes from three wetland sites, functional relationships between these fluxes and site characterstics, a hydrologic model, a riparian P model. These will be used to estimate P retention and export from three wetland sites.  
+
+The major research outcomes of the NE-SARE proposal are Maize Yield, Soil Characterstics, Nutrient Leaching, and Life Cycle cost, energy, and greenhouse gas inventories for 7 recipes of recycled organic fertilizers. In addition farmer surveys will be conducted and will indicate the likelyhood of adoption of the 7 seven fertilizer blends. I will be responsible for executing the Life Cycle Assessment in the NE-SARE proposal.
+
+Together data from the LCBP and the NE-SARE grants can be used to estimate the impact of organics recycling and ecosystem restoration have on phosphorus loads to lake champlain and the associated cost of management.
+ 
+There are four possible funding scenarios: 
+
+1. Both LCBP and NE-SARE are awarded
+
+2. LCBP is awarded and NE-SARE is not
+
+3. NE-SARE is awarded and LCBP is not
+
+4. Neither funding proposal is awared
+
+Below I propose trajectories for dissteration chapters based on scenarios 1-3.
+
+## Trajectory 1 - LCBP and NE-SARE are Funded
+In this scenario I will use the data from field/lab studies of the three wetlands to write *Chapter 1*, which will focus on pools and fluxes of P in three wetlands and statistical tests that relate these fluxes with site characteristics (e.g. hydroperiod, soil cation exchange capacity, total phosphorus, organic matter). *Chapter 2* would subsequantly focus on documenting and verifying a riparian P model and estimating of P retention and export in these systems using a hydrologic model. *Chapter 3* would take retention and export estimates parameterized informed by *Chapter 2* and incorperate this into a watershed scale P flow model. To build this model additional spatial data are required, such as population data (U.S. Census Bureau), land use/cover (U.S. Department of Agriculture), digitial elevation models, soil maps and hydrologic data (U.S. Geologic Survey), and historical P application estimates (Wirronen et al. 2018). *Chapter 4* would use the watershed model developed in *Chapter 3* and the LCA conducted in NE-SARE seek the optimal funding allocation to reduce P load to lake champlain and maximize environmental co-benefits. 
+```{r, echo=FALSE}
+grViz("
+digraph figure1{
+  # a 'graph' statement
+  graph [overlap = true, rankdir=TB, fontsize = 10]
+  #External Data nodes
+  node [shape = diamond,
+        fontname = Helvetica]
+  D1[label = 'EcoInvent Data']#diamond
+  D2[label = 'USGS Data']#diamond
+  D3[label = 'Spatial Data'] #diamond
+
+  # Funded Project nodes
+  node [shape = circle,
+        fontname = Helvetica]
+  A [label = 'NE-SARE'] #Circle
+  B[label = 'LCBP'] #Circle
+
+  #Output Data nodes
+  node [shape = box,
+        fontname = Helvetica]
+  A1[label = 'GHG Emissions'] 
+  A3[label = 'Maize Yield'] 
+  A2[label = 'Nutrient Leaching'] 
+  B2[label = 'P Dynamics Functions']
+  B3[label = 'P Pools and Fluxes']
+  B1[label = 'Wetland P Retention/Export']
+  
+  #Output Model nodes
+  node [shape = egg,
+        fontname = Helvetica]
+  A4[label = 'Org. Fertilizer LCA'] #Egg
+  B5[label = 'Riparian P Model']#Egg
+  B4[label = 'Hydrologic Model']#Egg
+  M2[label = 'Watershed P Model']#egg
+  M3[label = 'Water Quality Optimization']#egg
+  
+  #Chapter nodes
+  node [shape = box, style = filled, fillcolor = yellow,
+        fontname = Helvetica]
+  C1[label = 'Chapter 1']
+  C2[label = 'Chapter 2']
+  C3[label = 'Chapter 3']
+  C4[label = 'Chapter 4']
+
+  #edge statements
+  # NE_SARE data flows
+  D1 -> A4
+  A -> A1 
+  A -> A3
+  A -> A2
+  A1 -> A4
+  A3 -> A4
+  A2 -> A4
+  # LCBP data flows
+  D2 -> B4
+  B -> B2
+  B -> B3
+  B -> B4
+  B2 -> B5
+  B3 -> B5
+  B4 -> B1
+  B5 -> B1
+  B2 -> C1
+  B3 -> C1
+  B1 -> C2
+  D3 -> M2
+  # Watershed Model data flows 
+  A2 -> M2
+  B1 -> M2
+  M2 -> C3
+  A4 -> M3
+  M2 -> M3
+  M3 -> C4
+}
+")
+```

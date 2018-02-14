@@ -1,8 +1,8 @@
 ---
-title: "Dissertation Trajectories"
+title: "Dissertaion Trajectories"
 author: "Adrian Wiegman"
-date: "February 13, 2018"
-output: html_document
+date: "February 14, 2018"
+output: pdf_document
 ---
 
 ```{r setup, include=FALSE}
@@ -16,33 +16,33 @@ library(DiagrammeR)
 #https://github.com/rich-iannone/DiagrammeR/issues/133
 ```
 
-### Objectives
+## Objectives
 This document outlines the trajectories that my dissertation could take based on potential funding scenarios. At this time, two major proposals could influence my research: 
 
 1. The North East SARE (**NE-SARE**): "Quantifying phosphorus retention in restored riparian wetlands of the Lake Champlain Basin"*
 
 2. The Lake Champlain Basin Foundation (**LCBP**): "Synergistic use of recycled household and community nutrients to deliver balanced fertilization in Northeast agriculture"*
 
-I will be intimately involved with all aspects of the LCBP project. The major research outcomes of the LCBP project are data on phosphorus (P) pools and fluxes from three wetland sites, functional relationships between these fluxes and site characterstics, a hydrologic model, and a riparian P model. These will be used to estimate P retention and export from three wetland sites.  
+I will be intimately involved with all aspects of the LCBP proposal. The major research outcomes of the LCBP proposal are data on phosphorus (P) pools and fluxes from three wetland sites, functional relationships between these fluxes and site characterstics, a hydrologic model, a riparian P model. These will be used to estimate P retention and export from three wetland sites.  
 
-The major research outcomes of the NE-SARE project are maize yield, soil characterstics, nutrient Leaching, and life cycle cost, energy, and greenhouse gas inventories for 7 recipes of recycled organic fertilizers. In addition, farmer surveys will be conducted and will indicate the likelyhood of adoption of the 7 seven fertilizer blends. I will be responsible for executing the Life Cycle Assessment (LCA) for the NE-SARE.
+The major research outcomes of the NE-SARE proposal are Maize Yield, Soil Characterstics, Nutrient Leaching, and Life Cycle cost, energy, and greenhouse gas inventories for 7 recipes of recycled organic fertilizers. In addition farmer surveys will be conducted and will indicate the likelyhood of adoption of the 7 seven fertilizer blends. I will be responsible for executing the Life Cycle Assessment in the NE-SARE proposal.
 
-Together data from the LCBP and the NE-SARE grants can be used to estimate the impact organics recycling and ecosystem restoration have on phosphorus loads to lake champlain and the associated costs of management.
+Together data from the LCBP and the NE-SARE grants can be used to estimate the impact of organics recycling and ecosystem restoration have on phosphorus loads to lake champlain and the associated cost of management.
  
 There are four possible funding scenarios: 
 
-1. Both LCBP and NE-SARE are awarded
+1. Both LCBP and NE_SARE are awarded
 
-2. LCBP is awarded and NE-SARE is not
+2. LCBP is awarded and NE_SARE is not
 
 3. NE-SARE is awarded and LCBP is not
 
 4. Neither funding proposal is awared
 
-Below I propose trajectories for dissteration chapters based on scenarios 1-3.
+Below I propose trajectories for dissteration chapters based on scenarios 1-3
 
-### Trajectory 1 - LCBP and NE-SARE are Funded
-This trajectory draws from my experience in wetland modeling and energy systems analysis (Figure 1). Here I will use the data from field/lab studies of the three wetlands to write *Chapter 1*, which will focus on pools and fluxes of P and statistical tests that relate these fluxes with plot and site characteristics (e.g. hydroperiod, soil cation exchange capacity, total phosphorus, organic matter). *Chapter 2* would subsequantly focus on documenting and verifying a riparian P model and estimating of P retention and export in these systems using a hydrologic model. *Chapter 3* would take a model of P retention and export that is contstrained by the analysis in *Chapter 2* and incorperate it into a watershed scale P flow model. To build this model additional spatial data are required, such as population data (U.S. Census Bureau), land use/cover (U.S. Department of Agriculture), digitial elevation models, soil maps, hydrologic data (U.S. Geologic Survey), and historical P application estimates (Wirronen et al. 2018). *Chapter 4* would use the watershed model developed in *Chapter 3* and the LCA conducted for NE-SARE to seek the optimal funding allocation to reduce P load to lake champlain and maximize environmental co-benefits.  
+## Trajectory 1 - LCBP and NE-SARE are Funded
+In this scenario I will use the data from field/lab studies of the three wetlands to write *Chapter 1*, which will focus on pools and fluxes of P in three wetlands and statistical tests that relate these fluxes with site characteristics (e.g. hydroperiod, soil cation exchange capacity, total phosphorus, organic matter). *Chapter 2* would subsequantly focus on documenting and verifying a riparian P model and estimating of P retention and export in these systems using a hydrologic model. *Chapter 3* would take retention and export estimates parameterized informed by *Chapter 2* and incorperate this into a watershed scale P flow model. To build this model additional spatial data are required, such as population data (U.S. Census Bureau), land use/cover (U.S. Department of Agriculture), digitial elevation models, soil maps and hydrologic data (U.S. Geologic Survey), and historical P application estimates (Wirronen et al. 2018). *Chapter 4* would use the watershed model developed in *Chapter 3* and the LCA conducted in NE-SARE to seek the optimal funding allocation to reduce P load to lake champlain and maximize environmental co-benefits. 
 ```{r, echo=FALSE}
 grViz("
 digraph figure1{
@@ -120,10 +120,10 @@ digraph figure1{
 }
 ")
 ```
-**Figure 1**. Data and work flow trajectory for funding scenario 1; diamonds are external data, circles are funding sources, rectangles are new research products, chapters are highlighted in yellow. 
+**Figure 1**. Data and work flow for funding scenario 1; diamonds are external data, circles are funding sources, rectangles are new research products, chapters are highlighted in yellow. 
 
 ## Trajectory 2 - Only LCBP is funded
-Trajectory 2 relates to my previous research because it draws heavily from my prior experience in wetlands and bioenergy systems (Figure 2). If only the LCBP grant is funded then the first three chapters will remain the same as scenario 1. *Chapter 4* would instead focus on the potential P recovery from biomass harvesting on reclaimed riparian wetlands on former agricultural sites. The optimization portion of the study would evaluate tradeoffs of P load reduction and co-benefits for using a finite budget to purchase wetlands, harvesting equipment, NH4 fertilizer and transport harvested plants to the Burlington biomass energy plant. Biomass harvesting would be done at abandoned sites purchased by TNC for a number of years before entering into conservation easement. Harvesting would remove labile P from riparian corridor soil and biomass sales and carbon credits would recoup some of the costs of the operating the conservation program. Soil erosion with and without harvest would need to be investigated to modify retention and export estimates. 
+If only the LCBP grant is funded then the first three chapters will remain the same as scenario 1. Chapter 4 would focus on the potential P recovery from biomass harvesting on reclaimed riparian wetlands on former agricultural sites, the optimization would evaluate tradeoffs between purchasing wetlands, harvesting equipment and site locations for bioenergy plants with P recovery. 
 ```{r, echo=FALSE}
 grViz("
 digraph figure2{
@@ -191,10 +191,9 @@ digraph figure2{
 }
 ")
 ```
-**Figure 2**. Data and work flow trajectory for funding scenario 2
 
-### Trajectory 3 - Only NE-SARE is funded 
-If only NE-SARE is funded then an entirely different approach would be taken from trajectories 1 and 2 (Figure 3). *Chapter 1* would likely require additional funding, it could focus on a nutrient analysis of digestate valorization into various products. Alternatively *Chapter 1* could incorperate an additional study of maize from NE-SARE, such as focusing on nutrient leaching. *Chapter 2* would be an LCA and technoeconomic assesment of recycled organic fertilizers, including digestate and urine derivatives. *Chapter 3* would be a meta-analysis of global P resources in terms of chemical composition and processing options to concentrate the P. *Chapter 4* would combine meta-analysis and LCA data with map data to evaluate the costs of transporting and processing various P resources for use as fertilzer; optimization would evaluate at the tradeoffs between processing and transport distance for each resource type. Trajectory 3 relates to my previous experience because I will be focusing on energy throughout, and it culminates in an applied optmimization study that will have practical management implications (similar to Wiegman et al. 2018). 
+## Trajectory 3 - Only NE-SARE is funded 
+If only NE-SARE is funded then an entirely different approach would be taken. *Chapter 1* would likely require additional funding, it could focus on a nutrient analysis of digestate valorization into various products. Alternatively *Chapter 1* could incorperate an additional study of maize from NE-SARE, such as focusing on nutrient leaching. *Chapter 2* would be an LCA and technoeconomic assesment of recycled organic fertilizers, including digestate and urine derivatives. *Chapter 3* would be a meta-analysis of global P resources in terms of chemical composition and processing options to concentrate the P. Trajectory 3 relates to my masters work because I will be focusing on energy throughout. 
 ```{r, echo=FALSE}
 grViz("
 digraph figure3{
@@ -242,7 +241,6 @@ digraph figure3{
   # NE_SARE data flows
   D1 -> M1; A1 -> M1; A3 -> M1; A2 -> M1
   A -> A1; A -> A3; A -> A2; A -> A5
-  B -> A5
   D2 -> A4 ; M1 -> A4
   M1 -> C2
   M2 -> C3
@@ -256,14 +254,3 @@ digraph figure3{
 }
 ")
 ```
-**Figure 3**. Data and work flow trajectory for funding scenario 3
-
-### References
-* Wiegman et al. 2018
-* Wirronen et al. 2018
-* USGS
-* USDA
-* U.S. Census Bureau
-* EcoInvent
-* Google Maps API
-* Web of Science API
