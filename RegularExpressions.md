@@ -2,7 +2,7 @@
 
 #Regular Expressions (regex)
 
-Regular expressions are great for data cleaning or data wrangling. Always make a duplicate file before you work with regex. Use of regex is best for one time data file editing in an advanced text editor such as *notepad++*. For  for iterative string editing use the *R* package `stringr()` http://stringr.tidyverse.org/articles/regular-expressions.html or `grep()`, or use the *Python* module `re` https://docs.python.org/3/howto/regex.html . See https://www.regular-expressions.info/tools.html for more information.
+Regular expressions are great for data cleaning or data wrangling. Always make a duplicate file before you work with regex. Use of regex is best for one time data file editing in an advanced text editor such as *notepad++*. For documentation on using regular expressions with *notepad++*  click [here](http://docs.notepad-plus-plus.org/index.php/Regular_Expressions),  for iterative string editing use the package `stringr()` documented [here](http://stringr.tidyverse.org/articles/regular-expressions.html), For searching strings use `grep()`, for iterating regular expressions use `regexpr() ` click [here](https://gotellilab.github.io/Bio381/Scripts/Feb07/HandlingAndProcessingStringsInR.pdf), For string search and editing in *Python* use the module `re` use this [link](https://docs.python.org/3/howto/regex.html) . See this [link](https://www.regular-expressions.info/tools.html) for more information on regular expressions.
 
 
 
