@@ -102,7 +102,11 @@ L_neoniger,55
 
 Step 2. now abbreviate the species names down to the first four chars.
 
+<<<<<<< HEAD
 **regex** find: `(\w_\w{4})\w*(.*)` replace: `\1\2`
+=======
+**regex** find: `(\w_\w{4})\w*(.*)` replace: \1\2
+>>>>>>> 30ba9ea3b95ec6cda053257ec3d0c744153add73
 
 **resulting text file**
 ```
