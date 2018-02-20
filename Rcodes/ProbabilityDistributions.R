@@ -62,5 +62,5 @@ mean(temp2==0) # mean of a string of TRUE FALS that were coerced to integer
 # n= number of trials
 # size= number of replications per trial
 # p= probaility of success
-zz <- rbinom(n=1000,size=40,p=0.75)
+zz <- rbinom(n=1000,size=5,p=0.75)
 iHisto(xData=zz,fColor='slateblue')

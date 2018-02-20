@@ -1,0 +1,76 @@
+---
+title: "Descriptions of Potential Research Projects"
+author: "Adrian Wiegman"
+date: "February 20, 2018"
+output: 
+  html_document: 
+    number_sections: yes
+    toc: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Objectives
+
+This document outlines potential research projects for my dissertation. The projects are split into three categories field/lab studies and data studies. These projects are focused around quantifying economic energetic and environmental tradeoffs of the transition to a circular phosphorus economy. The data projects span from national/global multiresource scale to regional single resource scale. Below I list the data projects based on complexity. The first list below is comprised of simple projects that merit only one publication. The second list is comprised of complex projects that build off of one ore more of the single publication projects. The steps and data necessary to complete these data projects are given in detail in the next section. 
+
+## Simple data studies
+1. Estimation of transport distances for conventional and circular phosphorus fertilizer systems
+2. GIS based identification of coupled bioenergy and phosphorus recovery systems
+3. Preliminary evidence of economies of scale in organics recycling systems.
+4. Meta-analyis of global phosphorus resources, processing methods and fertilizer products: associated costs and environmental impacts. 
+5. Generation of a dynamic supply curve for global phosphorus fertilizer resources.
+6. Theoretical framework for optimization of organics recycling systems.
+
+## Complex data studies
+
+1. Modeling net energy and material flow in combined bioenergy and phosphorus recovery systems
+2. Optimization of organics processing stations based on multiple criteria
+3. Life cycle modeling of conventional fertilizer P industry and organic P fertilzer at various degrees of market penetration.
+
+## Field and lab studies
+1. Effects of Nitrogen fertilization crop type and harvet on soil phosphorus of abandoned agricultural fields in floodplains. 
+2. Characterization of organic waste and bioenergy ashes including phosphorus availability and material properties, after various manupulations. 
+
+# Detailed descriptions of data projects
+
+## Simple data projects
+
+### Estimation of transport distances for conventional and circular phosphorus fertilizer systems
+
+This project would involve the use of [google maps API](https://developers.google.com/maps/) US census bureau population data and the USDA croplands data layer and information on fertilizer processing and transfer facilities to estimate average transportation distance of fertilizer products to fields. Additional resources -- such as the UVM [transportation research center](http://www.uvm.edu/trc), and [ORWARE](https://www.sciencedirect.com/science/article/pii/S0921344997000207)  -- may be necessary to bring this project up to publishable rigor.  
+
+### GIS based identification of coupled bioenergy and phosphorus recovery systems
+This project would use several widely available and well maintained data sources to estimate the potential for lands to be converted into temporary bioenergy systems designed for P removal. Example: TNC has a list of 4000 potential wetland restoration sites. TNC must purchase these sites and put them into conservation easements. Converting these potential wetland restoration sites into temporary bioenergy systems could help remove legacy P from soils, while providing a means of recouping the costs of land purchases and restoration operations. This project could be coupled with a financial analysis of different land uses post property purchasing. 
+Data 
+* TNC wetland polygons
+* Soil types and drainage classes (USGS) 
+* Croplands data layer (USDA)
+* 
+
+### Preliminary evidence of economies of scale in organics recycling systems.
+This would involve a meta-analysis focusing on the data on cost per unit processing capacity for various organic waste systems. The analysis would start with a programmatic word search of 'web of science' data bases. Followed by criteria based selection of a large number of articles that contain data on costs per unit capacity to build and operate various organics recycling processes. If the web of science search fails to be fruitfull then a programmed advanced google search for usefull datasets will be conducted using the beautifulsoup4 and google packages of *python* ([example](https://www.geeksforgeeks.org/performing-google-search-using-python-code/)).  
+
+The goals of this study is to identify the maturity level of nutrient recovery processes, to fit curves to operation and construction costs based of these processes based on available data, and to constrain estimates of potential efficiency gains of less mature processes based on mature processes. 
+
+The potential uses of this study are to inform and constrain modeling efforts that evaluate tradeoffs between investments nutrient recovery systems. This might be practical for evaluating scale and location optimality (see section 2.1.6 for more on this). 
+
+### Meta-analyis of global phosphorus resources, processing methods and fertilizer products: associated costs and environmental impacts. 
+This study would involve combine a systematic review of liturature and USDA and Census data to give national or global assessment of P stocks of various forms. The second part of this project would provide data on the processes and associated costs to transform each P stock into a new product. The plant availability of these stocks would be reviewed. 
+
+### Generation of a dynamic supply curve for global phosphorus fertilizer resources.
+This study would build off of the previous study. Integrated assesment models used for energy and climate policy use a supply demand equilibrium approach to simulation the production of energy resources over long time horizons. The for the supply demand equilibrium model to work a database of supply is needed and a demand elasticity curve is needed. As society moves towards increasing criticality of phosphorus resources intregrated approaches will be needed to model and plan phosphorus policy. So this project will take the preliminary steps in constructing the supply curve for global phosphorus stocks. The global supply of P fertilizer is brought online by processing raw P resource stocks into P fertilizers ranging in concentration and P availability. The cumulative supply of phosphorus fertilizer is based on the demand for each type of P fertilizer. 
+
+### Theoretical framework for optimization of organics recycling systems.
+The optimal combination of resource recovery facilities will depend on the local population, land uses and transport networks. It is crucial to determine if there is any nonlinearity the variables being considered. A common form of nonlinearity in industrial systems is economies of scale.  Economies of scale derive from a physical relation with the square-cube law (which describes how the surface area to volume ratio decreases with increasing volume), this results in an exponential decay type relation of cost per unit with unit capacity. Transporation distance is more or less linear with increasing cartesian distance between points. Therefore an there is an optimal plant size and location that varies based on population density and road networks. But the optimimum plant size for a given area can't be determined without knowing the parameters for how costs change with capacity.
+
+## Complex data projects
+
+### Modeling net energy and material flow in combined bioenergy and phosphorus recovery systems
+### Optimization of organics processing stations based on multiple criteria
+### Life cycle modeling of conventional fertilizer P industry and organic P fertilzer at various degrees of market penetration.
+
+## Field and lab projects
+

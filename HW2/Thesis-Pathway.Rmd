@@ -2,7 +2,9 @@
 title: "Dissertation Trajectories"
 author: "Adrian Wiegman"
 date: "February 13, 2018"
-output: html_document
+output: 
+  html_document: 
+    toc: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -122,7 +124,7 @@ digraph figure1{
 ```
 **Figure 1**. Data and work flow trajectory for funding scenario 1; diamonds are external data, circles are funding sources, rectangles are new research products, chapters are highlighted in yellow. 
 
-## Trajectory 2 - Only LCBP is Funded
+### Trajectory 2 - Only LCBP is Funded
 Trajectory 2 relates to my previous research because it drhapters will remain the same as scenario 1. *Chapter 4* would instead focus on the potential P recovery from biomass harvesting on reclaimed riparian wetlands on former agricultural sites. The optimization portion of the study would evaluate tradeoffs of P load reduction and co-benefits for using a finite budget to purchase wetlands, harvesting equipment, NH4 fertilizer and transport harvesaws heavily from my prior experience in wetlands and bioenergy systems (Figure 2). If only the LCBP grant is funded then the first three cted plants to the Burlington biomass energy plant. Biomass harvesting would be done at abandoned ag. lands purchased by TNC for a number of years before entering into conservation easement. Harvesting would remove labile P from riparian corridor soil, while biomass sales and carbon credits would recoup some of the costs of the operating the conservation program. Soil erosion with and without harvest would need to be investigated to modify retention and export estimates. 
 ```{r, echo=FALSE}
 grViz("
@@ -194,11 +196,8 @@ digraph figure2{
 **Figure 2**. Data and work flow trajectory for funding scenario 2
 
 ### Trajectory 3 - Only NE-SARE is Funded 
-<<<<<<< HEAD
 If only NE-SARE is funded then an entirely different approach would be taken from trajectories 1 and 2 (Figure 3). *Chapter 1* would likely require additional funding, it could focus on a nutrient analysis of organic resource valorization into various products. One of the main reasons recycled organics are not economic to transport long distances is because they have high water content (often between 40-70%), leading to low nutrient density (Kirchmann et al. 2017). A potential study could be a chemical characterization of recycled organics before and after various concentratrion processes, such as acid digestion and precipitation, or incineration and acid extraction, or pyrolysis. An energy analysis of these processes could be done in parallel, that would inform an LCA. Alternatively *Chapter 1* could incorperate an additional study of maize from NE-SARE, such as focusing on nutrient leaching. *Chapter 2* would be an LCA and technoeconomic assesment of recycled organic fertilizers, including varlorized digestate and urine derivatives. *Chapter 3* would be a meta-analysis of global P resources in terms of chemical composition and processing options to concentrate the P. This analysis would result in a database of P resources and transformation processes that could inform future LCA and modeling. *Chapter 4* would combine P meta-analysis and LCA data with map data to evaluate the costs of transporting and processing various P resources for use as fertilzer; optimization would evaluate the tradeoffs between processing and transport distance for each resource type. Trajectory 3 relates to my previous experience because I will be focusing on energy throughout, and it culminates in an applied optmimization study that will have practical management implications (similar to Wiegman et al. 2018). 
-=======
-If only NE-SARE is funded then an entirely different approach would be taken from trajectories 1 and 2 (Figure 3). *Chapter 1* would likely require additional funding, it could focus on a nutrient analysis of digestate valorization into various products. Alternatively *Chapter 1* could incorperate an additional study of maize from NE-SARE, such as focusing on nutrient leaching. *Chapter 2* would be an LCA and technoeconomic assesment of recycled organic fertilizers, including digestate and urine derivatives. *Chapter 3* would be a meta-analysis of global P resources in terms of chemical composition and processing options to concentrate the P. *Chapter 4* would combine meta-analysis and LCA data with map data to evaluate the costs of transporting and processing various P resources for use as fertilzer; optimization would evaluate the tradeoffs between processing and transport distance for each resource type. Trajectory 3 relates to my previous experience because I will be focusing on energy throughout, and it culminates in an applied optmimization study that will have practical management implications (similar to Wiegman et al. 2018). 
->>>>>>> 30ba9ea3b95ec6cda053257ec3d0c744153add73
+
 ```{r, echo=FALSE}
 grViz("
 digraph figure3{
