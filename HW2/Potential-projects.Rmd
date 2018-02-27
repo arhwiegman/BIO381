@@ -21,14 +21,15 @@ This document outlines potential research projects for my dissertation. The proj
 2. GIS based identification of coupled bioenergy and phosphorus recovery systems
 3. Preliminary evidence of economies of scale in organics recycling systems.
 4. Meta-analyis of global phosphorus resources, processing methods and fertilizer products: associated costs and environmental impacts. 
-5. Generation of a dynamic supply curve for global phosphorus fertilizer resources.
-6. Theoretical framework for optimization of organics recycling systems.
+5. Theoretical framework for optimization of organics recycling systems.
+6. Meta-analysis and statistical spatial correlation between published data on bioenergy and nutrient retention of riparian and floodplain systems. 
 
 ## Complex data studies
 
-1. Modeling net energy and material flow in combined bioenergy and phosphorus recovery systems
-2. Optimization of organics processing stations based on multiple criteria
-3. Life cycle modeling of conventional fertilizer P industry and organic P fertilzer at various degrees of market penetration.
+1. Generation of a dynamic supply curve for global phosphorus fertilizer resources.
+2. Modeling net energy and material flow in combined bioenergy and phosphorus recovery systems
+3. Optimization of organics processing stations based on multiple criteria
+4. Life cycle modeling of conventional fertilizer P industry and organic P fertilzer at various degrees of market penetration.
 
 ## Field and lab studies
 1. Effects of Nitrogen fertilization crop type and harvet on soil phosphorus of abandoned agricultural fields in floodplains. 
@@ -55,19 +56,22 @@ This would involve a meta-analysis focusing on the data on cost per unit process
 
 The goals of this study is to identify the maturity level of nutrient recovery processes, to fit curves to operation and construction costs based of these processes based on available data, and to constrain estimates of potential efficiency gains of less mature processes based on mature processes. 
 
-The potential uses of this study are to inform and constrain modeling efforts that evaluate tradeoffs between investments nutrient recovery systems. This might be practical for evaluating scale and location optimality (see section 2.1.6 for more on this). 
+The potential uses of this study are to inform and constrain modeling efforts that evaluate tradeoffs between investments nutrient recovery systems. This might be practical for evaluating scale and location optimality (see section 2.1.5 for more on this). 
 
 ### Meta-analyis of global phosphorus resources, processing methods and fertilizer products: associated costs and environmental impacts. 
-This study would involve combine a systematic review of liturature and USDA and Census data to give national or global assessment of P stocks of various forms. The second part of this project would provide data on the processes and associated costs to transform each P stock into a new product. The plant availability of these stocks would be reviewed. 
-
-### Generation of a dynamic supply curve for global phosphorus fertilizer resources.
-This study would build off of the previous study. Integrated assesment models used for energy and climate policy use a supply demand equilibrium approach to simulation the production of energy resources over long time horizons. The for the supply demand equilibrium model to work a database of supply is needed and a demand elasticity curve is needed. As society moves towards increasing criticality of phosphorus resources intregrated approaches will be needed to model and plan phosphorus policy. So this project will take the preliminary steps in constructing the supply curve for global phosphorus stocks. The global supply of P fertilizer is brought online by processing raw P resource stocks into P fertilizers ranging in concentration and P availability. The cumulative supply of phosphorus fertilizer is based on the demand for each type of P fertilizer. 
+This study would involve combine a systematic review of liturature and geospatial analysis to obtain estimates of global P resource stocks and transformation costs. Mineral P resources would be obtained through literature sources (e.g. Koppelaar et al. 2013). Biomass P resources including humans (and associated food and waste systems), livestock (and associated food and waste systems), vegetation data will be obtained through analysis of US census bureau data, USDA data and published estimates of biomass P (e.g. Metson et al. 2016). Wastewater P will be estimated based on EPA data on treatment plant locations [](https://geodata.epa.gov/arcgis/rest/services/OEI/FRS_Wastewater/MapServer)Data.gov. The second part of this project would provide data on the processes and associated costs to transform each P stock into a new product. The plant availability of these stocks would be reviewed. 
 
 ### Theoretical framework for optimization of organics recycling systems.
 The optimal combination of resource recovery facilities will depend on the local population, land uses and transport networks. It is crucial to determine if there is any nonlinearity the variables being considered. A common form of nonlinearity in industrial systems is economies of scale.  Economies of scale derive from a physical relation with the square-cube law (which describes how the surface area to volume ratio decreases with increasing volume), this results in an exponential decay type relation of cost per unit with unit capacity. Transporation distance is more or less linear with increasing cartesian distance between points. Therefore an there is an optimal plant size and location that varies based on population density and road networks. But the optimimum plant size for a given area can't be determined without knowing the parameters for how costs change with capacity.
 
+### Meta-analysis and statistical spatial correlation between published data on bioenergy and nutrient retention of riparian and floodplain systems. 
+
+Ample studies have been published on the nutrient retention and biomass production of riparian buffer strips and constructed wetlands and floodplain restoration. I propose to synthesize this data and conduct a correlation analysis to model potential nutrient retention and biomass harvest using correlation of geospatial data. Most studies give information on the location and soil characteristics of the study area. I will use additional data sets such as the croplands data layer, climate and precipitation, to conduct regression analysis on the growth and P accumulation of these systems. This data could be used to build a model that provides course estimates P load reduction and removal based on geospatial data. (Fortier et al. 2015)
+
 ## Complex data projects
 
+### Generation of a dynamic supply curve for global phosphorus fertilizer resources.
+This study would build off of the meta-analysis of P resources described in section 2.1.3. Integrated assesment models used for energy and climate policy use a supply demand equilibrium approach to simulation the production of energy resources over long time horizons. The for the supply demand equilibrium model to work a database of supply is needed and a demand elasticity curve is needed. As society moves towards increasing criticality of phosphorus resources intregrated approaches will be needed to model and plan phosphorus policy. So this project will take the preliminary steps in constructing the supply curve for global phosphorus stocks. The global supply of P fertilizer is brought online by processing raw P resource stocks into P fertilizers ranging in concentration and P availability. The cumulative supply of phosphorus fertilizer is based on the demand for each type of P fertilizer.
 ### Modeling net energy and material flow in combined bioenergy and phosphorus recovery systems
 ### Optimization of organics processing stations based on multiple criteria
 ### Life cycle modeling of conventional fertilizer P industry and organic P fertilzer at various degrees of market penetration.
