@@ -1,0 +1,82 @@
+---
+title: "Homework 7"
+author: "Adrian Wiegman"
+date: "February 28, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+# function to simulate random normal data for a specified experimental setup
+simData <- function(nFactors = 1, #number of treatment factors
+                    nBlocks = 3, #number of study blocks or sites
+                    nTreats = 3, #number of treatment levels for each factor
+                    nReps = 10, #number of observations or reps per treatment level per block
+                    AVG = 20, #average accross all samples 
+                    SD = 5, #standard deviation across all samples
+                    fE = 0, #factor effect
+                    bE = 0, #block effect
+                    tE = 5, #treatment effect
+                    rE = 0 #observation number effect important for a time series
+                    ){
+  ID <- NULL
+  factor <- NULL
+  block <- NULL
+  treatment <- NULL
+  observation <- NULL
+  i <- 0
+  for (f in seq(1,nFactors)){
+    for (b in seq(1,nBlocks)){
+      for (t in seq(1,nTreats)){
+        for (r in seq(1,nReps)){
+          i <- i + 1
+          ID <- c(ID,i)
+          factor <- c(factor,f)
+          block <- c(block,b)
+          treatment <- c(treatment,t)
+          observation <- c(observation,r)
+          response[i] <- AVG + f*fE* + b*bE + t*tE + r*rE + 5*rnorm(n=1)
+        } # end o loop
+      } # end t loop
+    } # end b loop
+  } # end f loop
+  Data <- data.frame(ID,factor,block,treatment,observation,response)
+  qplot(x=ID,y=response)
+  return(Data)
+} #end function simData
+
+#test function
+myData <- simData()
+str(myData) 
+```
+
+```{r}
+# function to conduct Analysis of Variance, produce a vector of outputs and plot a graph
+testAOV <- function(data=myData){
+  myAOV  <- aov(response ~ treatment, data=myData)
+  vAOV <- unlist(myAOV)
+  print(vAOV)
+  #AOVout <- c(vAOV$)
+  #return(myAOV,vAOV,AOVout)
+  }
+
+testAOV()
+# function to conduct linear regression and produce a vector of outputs
+testREG <- function(data=myData){
+  myREG  <- lm(response ~ x1, data=myData) # produces results as a list
+  vREG <- unlist(myREG) # vectorized regression outputs
+  #REGout <- c(vREG) # summarized outputs
+  return(myREG,vREG,REGout)
+  }
+```
+```{r}
+# function to plot a graph with regression data and results
+plotAoV <- function(data=dataAOV, results=REGout){}
+  
+# function to plot a graph with regression data and results
+plotAoV <- function(data=dataREG, results=AOVout){}
+```
+

@@ -100,4 +100,37 @@ ANOplot <- ggplot(data=ANOdata,
 # you need to specify a geom for ggplot
 print(ANOplot)
 ggsave(filename='myBoxPlot.pdf',plot=ANOplot,device='pdf')
-                  
+
+
+#create data frame for logistic regression
+xVar <- sort(rgamma(n=200,shape=5,scale=5))
+yVar <- sample(rep(c(1,0),each=100),prob=seq_len(200))
+qplot(x=xVar, y=yVar)               
+lRegData <- data.frame(ID=1:200,xVar,yVar)
+str(lgRegData)
+
+#logistic regression analysis in R
+lRegModel <- glm(yVar~xVar,data=lRegData,family=binomial(link=logit))
+summary(lRegModel)
+summary(lRegModel)$coefficients
+
+#basic ggplot of logistic regression
+lRegPlot <- ggplot(data=lRegData, aes(x=xVar,y=yVar)) + 
+  geom_point() + 
+  stat_smooth(method=glm, method.args = list(family=binomial)) +
+  theme_classic()
+print(lRegPlot)
+
+#basic contigency table analysis in R
+
+vec1 <- c(50,66,22) #counts of occurances
+vec2 <- c(120,22,30) #
+dataMatrix <- rbind(vec1,vec2) #row bind creates a matrix from two vectors
+rownames(dataMatrix) <- c('Cold','Warm')
+colnames(dataMatrix) <- c('Aphaenog aster', 'Camponotus', 'Crematogaster')
+dataMatrix
+
+#contingency table analysis
+print(chisq.test(dataMatrix))
+
+mosaicplot(x=dataMatrix, col=c('green','red','blue'), shade=FALSE)
