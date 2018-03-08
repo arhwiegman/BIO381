@@ -58,7 +58,7 @@ hardyWeinberg <- function(p=runif(1)){
 #####################################################
 hardyWeinberg()
 hardyWeinberg(p=0.5)
-P # p is not a global variable so it is not stored in memory of main program
+#P is not a global variable so it is not stored in memory of main program
 
 p <- 0.6 # p Global
 hardyWeinberg(p=p)
@@ -139,9 +139,18 @@ myFuncBad()
 fitLinear <- function(x=runif(20),y=runif(20)){
   myMod <- lm(y~x) #fits model
   myOut <- c(slope=summary(myMod)$coefficients[2,1],intercept=summary(myMod)$coefficients[1,1],pVal=summary(myMod)$coefficients[2,4])
-  plotVar <- qplot(x=x,y=y)
+  plotVar <- qplot(x=x,y=y,geom=c('smooth','point'))
   print(plotVar)
   return(myOut)
 }
 ##################################################
 fitLinear()
+
+# dealing with too many parameters
+# by bundlin them up
+z<-c(runif(99),NA)
+mean(z) # need to account for NA
+mean(x=z,na.rm=TRUE) #removes NA
+mean(x=z,na.rm=TRUE,trim=0.05) # trim of the 2.5 and 97.5 percentile
+l <- list(x=z,na.rm=TRUE,trim=0.05)
+do.call(mean,l)

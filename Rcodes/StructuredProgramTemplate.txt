@@ -1,0 +1,16 @@
+#Program Annotation-----------------------------
+# What it does
+# Your Name
+# date
+
+# Preliminary Set Up----------------------------
+
+library(ggplot2)
+library(TeachingDemos)
+char2seed("espresso")
+
+# Function Definitions---------------------------
+function1(){}
+function2(){}
+function2a(){} # a revised version of function2
+# Program Code-----------------------------------
