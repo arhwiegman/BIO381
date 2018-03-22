@@ -1,0 +1,14 @@
+# Control Structure 
+# executes expression if condition is TRUE
+if (condition){expression...} 
+
+# two branch control structure IF ELSE 
+# single line
+if(condition){expression1}else{expression2}
+
+# three or more branched control structure
+if(condition){expression1}else
+if(condition2){expression2}else{expression3}
+# branched control structure
+
+# there is also a switch function for long branching control structures

@@ -1,0 +1,140 @@
+R: Calculating all possible linear regression models for a given set of predictors	06feb09
+variationsAlthough the graphic at the left might not seem a 100% appropriate, it gives a hint to what I am about to do. I want to calculate all possible linear regression models with one dependent and several independent variables. I do not want to address bias and fitting issues or the question if this makes sense from a statistical point of view in this posting. Here I want to emphasize the technical issues only.
+
+To solve the task, several approaches are possible. The first one is a step-by-step approach using a lot of code. Another one would be to make use of a specialized package. The packages leaps and meifly would be appropriate for the task but have some slight drawbacks in terms of flexibility. I will not address solutions using these packages here, but I would like to point out that in contrast to the below only a few lines of code would do the job.
+
+The step-by-step approach
+Let’s suppose we have the following set of four possible regressors.
+```
+regressors <- c("y1", "y2", "y3", "y4")
+```
+Now we want to construct a formula that contains the first and third regressor.
+```
+vec <- c(T, F, T, F)
+paste(regressors[vec])
+# [1] "y2" "y3"
+```
+So the paste commmand works vectorwise which helps a lot in this case. Now we add a plus sign between the regressors…
+
+```
+paste(regressors[vec], collapse=" + ")
+```
+… and add the left side of the equation. The 1 in the formula models the intercept , 0 would be a model without intercept.
+```
+paste(c("y ~ 1", regressors[vec]), collapse=" + ")
+```
+Now let’s make a formula out of it.
+```
+as.formula(paste(c("y ~ 1", regressors[vec]), collapse=" + "))
+```
+So we can construct a formula from each row of a TRUE /FALSE matrix which determines if a regressor is used or not. Now we need a TRUE / FALSE matrix of all the possible regressor combinations. The expand.grid() function produces one (see ?expand.grid).
+```
+regMat <- expand.grid(c(TRUE,FALSE), c(TRUE,FALSE),
+                      c(TRUE,FALSE), c(TRUE,FALSE)) 
+# > regMat
+#     Var1  Var2  Var3  Var4
+# 1   TRUE  TRUE  TRUE  TRUE
+# 2  FALSE  TRUE  TRUE  TRUE
+# 3   TRUE FALSE  TRUE  TRUE
+# 4  FALSE FALSE  TRUE  TRUE
+# 5   TRUE  TRUE FALSE  TRUE
+```
+The last line describes a trivial model as it does not contain any regressors (as it contains only FALSE values), thus it is removed.
+```
+regMat <- regMat[-(dim(regMat)[1]),]
+
+# let's name the columns
+names(regMat) <- paste("y", 1:4, sep="")
+```
+Now we can apply the above way of formula construction to each row of the matrix so we get a list with all the possible models.
+```
+# x1 will be dependent
+regressors <- c("y1", "y2", "y3", "y4")
+
+allModelsList <- apply(regMat, 1, function(x) as.formula(
+                       paste(c("x1 ~ 1", regressors[x]),
+                             collapse=" + ")) )
+# > allModelsList
+# [[1]]
+# x1 ~ 1 + y1 + y2 + y3 + y4
+#
+# [[2]]
+# x1 ~ 1 + y2 + y3 + y4
+#
+# [[3]]
+# x1 ~ 1 + y1 + y3 + y4
+The last step is to use each list element for the calculation.
+
+data=anscombe
+allModelsResults <- lapply(allModelsList,
+                           function(x) lm(x, data=data))
+So basically, here our computation work is done, but as in most cases a lot of work follows to prepare the data in a nice way. So now let’s get all the important information into one dataframe. Let’s say we want a data frame like the following.
+
++-------+-----------------------------------------------------+
+| model |   no. of   | coefficients | se coef. | t-Val | etc. |
+|       | regressors |  x1 | x2 ... |          |       |      |
+|       |            |              |          |       |      |
+
+So we need to extract all the following information (coefficients, SE etc.) and cast them into one data frame.
+
+x <- allModelsResults[[1]]
+coef(x)
+coef(summary(x))[, "Std. Error"]
+### ... and so on
+```
+
+This used to be one of the nasty tasks in R. Here Hadley Wickhams plyr package really helps a lot. ldply takes a list, applies a function and casts the results into ONE data frame (see ?ldply). As function return value it expects a data frame or a vector. The advantage to return data frames is that the ldply() function uses rbind.fill for combining the results when they are data frames. rbind.fill() allows a different number of columns in each data frame. Here this is the case as a different number of regressors are used each time. So we have to make sure that the function returns a data frame. Thus we use as.data.frame paying attention to the orientation of the data frame, using t() in case it is outputted as one column.
+
+```
+library(plyr)
+dfCoefNum   <- ldply(allModelsResults, function(x) as.data.frame(
+                     t(coef(x))))
+dfStdErrors <- ldply(allModelsResults, function(x) as.data.frame(
+                     t(coef(summary(x))[, "Std. Error"])))
+dftValues   <- ldply(allModelsResults, function(x) as.data.frame(
+                     t(coef(summary(x))[, "t value"])))
+dfpValues   <- ldply(allModelsResults, function(x) as.data.frame(
+                     t(coef(summary(x))[, "Pr(>|t|)"]))) 
+
+# rename DFs so we know what the column contains
+names(dfStdErrors) <- paste("se", names(dfStdErrors), sep=".")
+names(dftValues) <- paste("t", names(dftValues), sep=".")
+names(dfpValues) <- paste("p", names(dfpValues), sep=".")
+
+# p-value for overall model fit
+calcPval <- function(x){
+    fstat <- summary(x)$fstatistic
+    pVal <- pf(fstat[1], fstat[2], fstat[3], lower.tail = FALSE)
+    return(pVal)
+}
+# Before creating ONE data frame with all important entries,
+# we need to compute some more indices 
+NoOfCoef <- unlist(apply(regMat, 1, sum))
+R2       <- unlist(lapply(allModelsResults, function(x)
+                          summary(x)$r.squared))
+adjR2    <- unlist(lapply(allModelsResults, function(x)
+                          summary(x)$adj.r.squared))
+RMSE     <- unlist(lapply(allModelsResults, function(x)
+                          summary(x)$sigma))
+fstats   <- unlist(lapply(allModelsResults, calcPval))
+
+# now we can combine all the data into one data frame
+results <- data.frame( model = as.character(allModelsList),
+                       NoOfCoef = NoOfCoef,
+                       dfCoefNum,
+                       dfStdErrors,
+                       dftValues,
+                       dfpValues,
+                       R2 = R2,
+                       adjR2 = adjR2,
+                       RMSE = RMSE,
+                       pF = fstats  )
+# round the results
+results[,-c(1,2)] <- round(results[,-c(1,2)], 3)
+results
+```
+This was really a lot of code. But now we have assembled all the information and indices that were important for my task. To choose what is needed is simple now. And we have the flexibility to add any indices. Next time I will try to extend this example doing a k-fold estimation for each set of regressors.
+
+Cheers,
+
+Mark Heckmann

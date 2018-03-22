@@ -132,7 +132,10 @@ plotAOV <- function(treatment=rep(letters[1:3],each=10), response=runif(30),stat
     if (postHoc == TRUE){ 
       stats <- tukeylabel_df(lev=x,y=y,flev='lev',alpha=alpha) #call tukeylabel_df
       p <- ggplot(data=df,aes(x=x,y=y,fill=x))+geom_boxplot()
-      p <- p + geom_text(data = stats, aes(x = plot.labels, y = V1, label = labels))
+      p <- p + geom_text(data=stats, 
+                         aes(x=plot.labels, 
+                             y=V1, 
+                             label=labels)
       } else {
         t <- unlist(summary(aov(y~x,data=df)))
         pvalue <- toString(t[9]) 
