@@ -108,5 +108,63 @@ for (i in 2:10){
   cat("loop number =",i,"vector element",myDat[i],"\n")
 }
 # because the c() function is called each time the loop will be very slow
-  
 
+#DO NOT CHANGE THE LENGTH OF A VECTOR IN A LOOP 
+# e.g. c(),list(),rbind(),cbind()
+#THIS SLOWS THE PROGRAM DOWN 
+
+
+#do not write a loop if you can vectorize
+myDat <- 1:100 
+slower <- function (myDat)
+  for (i in seq_along(myDat)){
+  myDat[i] <- myDat[i] + myDat[i]^2
+  cat("loop number =",i,"vector element",myDat[i],"\n")
+  }
+slow <- system.time(slower(myDat))
+#most languages require a for loop to do this
+
+#since R works is designed to operate on vectors 
+#these things can be done on an entire vector
+faster <- function(myDat){
+  myDat <- myDat + myDat^2
+  print(myDat)
+}
+fast <- system.time(faster(myDat))
+slow[3]/fast[3]
+z<-c(10,2,4)
+for(i in seq_along(z)){
+  cat("i=",i,"z[i]=",z[i],"\n")
+}
+
+#counter variable retains its final value
+
+#use next to skip elements in loop
+#operate only on odd-numbered elements
+z <- 1:20 
+slower1 <- function (z){
+  for (i in seq_along(z)){
+  if(i %% 2==0) next  
+  #this finds the remainder of i/2, 
+  #if i/2 is zero skip to next i value
+  cat("i=",i,"z[i]=",z[i],"\n")
+  }
+}
+system.time(slower1(z))
+#another way to skip elements
+zodd <- z[z%%2!=0] #only odd numbers in z
+faster2 <- function(z){
+  for (i in seq_along(z)){
+  #this finds the remainder of i/2, 
+  #if i/2 is zero skip to next i value
+  cat("i=",i,"z[i]=",z[i],"\n")
+  }
+}
+system.time(faster2(zodd))
+
+#fill a vector with zeros
+zstore <- vector(mode='numeric',length=length(z))
+#fill a vector with NA
+zstore <- rep(NA,length(z))
+
+            
