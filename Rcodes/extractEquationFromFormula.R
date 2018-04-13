@@ -19,7 +19,7 @@ expr.from.lm <- function (fit) {
 }
 
 # generate and fit dummy data
-df <- data.frame(iq=rnorm(10), sex=runif(10) < 0.5, weight=rnorm(10), height=rnorm(10))
+df <- data.frame(y=rnorm(10), x1=runif(10) < 0.5, x2=rnorm(10), x3=rnorm(10))
 f <- lm(iq ~ sex + weight + height, df)
 # plot with our expression as the title
 plot(resid(f), main=expr.from.lm(f))

@@ -1,67 +1,72 @@
----
-title: "Beamer Presentation (BIO 381 - HW 3)"
-author: "Adrian Wiegman"
-date: "January 31, 2018"
-output:
-  ioslides_presentation: default
-  beamer_presentation: default
----
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE)
-```
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
 
-## Primary objective of the Presentation
+\documentclass[11pt]{article} % use larger type; default would be 10pt
 
-- demonstrate use of sequential and simultaneous bullet points
-- use colored text
-- use an images 
-- use an image with a caption
-- use an image with an overlayed caption
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
 
-## Secondary objective of the presentation
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
 
-- talk about my what i had for breakfast!
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
 
-## Ingredients of my breakfast 
+\usepackage{graphicx} % support the \includegraphics command and options
 
->- \color{white}e\color{yellow}gg\color{white}s 
->- \color{pink} ham
->- \color{green} green dye
->- \color{cream} butter
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
 
-## An R vector of what I had for breakfast
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
 
-```{r cars, echo = TRUE}
-Breakfast <- c('green','eggs','and','ham')
-print(Breakfast)
-```
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
 
-## An equation for the weight I gained after eating my breakfast
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
 
-$B = E*n~e~*k~ce~ + GD + H**k~ch~ + B*k~cb~$
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
 
+%%% END Article customizations
 
-- B is the mass of my breakfast (grams), E the mass of on large chicken egg (grams), n~e~ is the number of eggs, k~ce~ is the moisture loss coefficient (g g^-1^) for pan frying one raw egg from a temp of 5degC to a mean tempurature of 70degC 
+%%% The "real" document content comes below...
 
-- GD is the mass of green dye added to the egg yolk prior to frying
+\title{Brief Article}
+\author{The Author}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
 
-- H the mass of a standard 1 cm thick slice of ham shank with a diameter of 15cm (grams), and k~ch~ is the moisture loss coefficient for pan frying a standard slice smoked ham shank up from 5decC to to 70decG
+\begin{document}
+\maketitle
 
-- B the mass of butter added, to greese the pan, k~cb~ is the moisture loss coefficient to bring the eggs and ham from a temp of 5degC to 70degC
+\section{First section}
 
-## A picture of what I had for breakfast
- \begin{picture}(320,250)
- \put(85,75){\includegraphics[height=6cm]
- {samiam.jpg}}
- \put(00,60){\begin{minipage}[t]{1\linewidth}
- {Choose a point on the unit circle. Connect it to 
- the origin with a line of 
- length one, and denote the angle between that line 
- and the horizontal 
- coordinate axis by $\theta$.}
- \end{minipage}}
- \end{picture}
+Your text goes here.
 
+\subsection{A subsection}
 
+More text.
 
+\end{document}

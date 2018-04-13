@@ -63,12 +63,13 @@ model.frame(y ~ x * x2, data = data.frame(x = x, y = y, x2=x2))
 df <- data.frame(1:5, 2:6, 3:7,4:8)
 names(df) <- c('a', 'b', 'c', 'd')
 textExpr <- paste(names(df), collapse='+')
-parse(text = textEpr) -> expr
+expr <- parse(text = textExpr)
 eval(expr, envir = df)
 
 #convert an expression into a formula and evaluate
 form <- formula(paste("y~",textExpr))
 form
+df <- data.frame(ID=seq_along(df[,1]),df,y=rep(NA,length(df[,1])))
 a <- model.frame(form,df)
 a
 

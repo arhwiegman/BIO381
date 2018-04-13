@@ -97,6 +97,7 @@ AOVtest <- function(y=runif(30),x=rep(letters[1:3],each=10),alpha=0.05,postHoc =
 #END FUNCTION AOVtest
 ########################
 ```
+
 ```{r}
 ###################################
 #///FUNCTION: REGtest

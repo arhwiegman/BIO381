@@ -21,6 +21,9 @@ View(siteData)
 trtData <- read.csv("Mcmillan&Noe_2013_data_treatment.csv",stringsAsFactors=FALSE, comment.char="#")
 View(trtData)
 ```
+## Assigment Objectives
+
+1. I am examinining the factors that influence flux of water soluble phosphorus to and from inundated sediments. My hypothesis is that sites with higher rates of sedimentation 
 
 ```{r}
 # Define Functions------------------------------------
