@@ -17,6 +17,7 @@ knitr::opts_chunk$set(echo = TRUE)
  - [Homework 5](HW5/homework05.html)
  - [Homework 6](HW6/homework06.html)
  - [Homework 7](HW7/homework07.html)
+ - [Homework 9](HW9/homework09.html)
 
 ## Info
 
