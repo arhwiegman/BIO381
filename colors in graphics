@@ -1,0 +1,24 @@
+colors in graphics
+
+- aesthetics
+	- large geom(fills) - pale colors
+	- small geom(points and lines) - brighter colors
+	- dichromat() for people with red green color blindness
+	- emphasize or deemphasize graphic elements
+		- pale and gray - deemphasize 
+		- bright saturated - emphasize
+	- discrete scale
+		- same color to similar treatments
+		- neutral colors (black, white, gray) for control treatments
+		- symbolic colors
+			- red to indicate high temp
+			- cool to indicate low temp
+			- growth or NPP green
+			- oligotroph - blue
+			- eutrophic - brown
+			- infected - red
+	- continuous colors
+		- monochromatic varying saturation
+		- dichromatic scale (red to green)
+		- divergent scale (red white blue) white being close to 0
+		

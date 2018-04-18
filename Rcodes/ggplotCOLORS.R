@@ -91,7 +91,6 @@ p3 + scale_color_gradient2(midpoint=z,low='red',mid='seagreen',high='cyan',space
 
 p3 + scale_color_gradientn(colors=rainbow(5)) + theme_dark()
 
-
 #heat map 
 xVar <- 1:30
 yVar <- 1:5
