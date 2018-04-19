@@ -10,6 +10,11 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+## R Package Demos
+
+ - [`stringr` lesson](stringr_lesson/stringr_lesson.html)
+ 
+
 ## Homework
  - [Homework 2](HW2/homework02.html)
  - [Homework 3](HW3/homework03.pdf)
