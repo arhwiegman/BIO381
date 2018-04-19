@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+      <tbody><tr class="up-tree js-navigation-item">
+        <td></td>
+        <td><a rel="nofollow" title="Go to parent directory" class="js-navigation-open" href="/arhwiegman/Bio381_2018">..</a></td>
+        <td></td>
+        <td></td>
+      </tr>
+
+
+    </tbody><tbody>
+      <tr class="warning include-fragment-error">
+        <td class="icon"><svg class="octicon octicon-alert" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M8.865 1.52c-.18-.31-.51-.5-.87-.5s-.69.19-.87.5L.275 13.5c-.18.31-.18.69 0 1 .19.31.52.5.87.5h13.7c.36 0 .69-.19.86-.5.17-.31.18-.69.01-1L8.865 1.52zM8.995 13h-2v-2h2v2zm0-3h-2V6h2v4z"></path></svg></td>
+        <td class="content" colspan="3">Failed to load latest commit information.</td>
+      </tr>
+
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img class="spinner" alt="" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a class="js-navigation-open" title="Homework11.Rmd" id="04059c8b7fb13402ae7b32d16416a0f3-7dcce085a04f81d754fdec5f916c9b5e3bb7c231" href="/arhwiegman/Bio381_2018/blob/master/HW11/Homework11.Rmd">Homework11.Rmd</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a data-pjax="true" title="regressionfunctions" class="message" href="/arhwiegman/Bio381_2018/commit/0f84d087428dc111f9d7127af9cd0f7423a43999">regressionfunctions</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2018-04-13T03:19:54Z" title="Apr 12, 2018, 11:19 PM EDT">6 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item">
+          <td class="icon">
+            <svg class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img class="spinner" alt="" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a class="js-navigation-open" title="Homework11.html" id="65b78be4b5e6fd0608bae52c8c3b071b-a0a86647028f24ef3b9cfabf60e0cfc8464f7b9d" href="/arhwiegman/Bio381_2018/blob/master/HW11/Homework11.html">Homework11.html</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a data-pjax="true" title="regressionfunctions" class="message" href="/arhwiegman/Bio381_2018/commit/0f84d087428dc111f9d7127af9cd0f7423a43999">regressionfunctions</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2018-04-13T03:19:54Z" title="Apr 12, 2018, 11:19 PM EDT">6 days ago</time-ago></span>
+          </td>
+        </tr>
+        <tr class="js-navigation-item navigation-focus">
+          <td class="icon">
+            <svg class="octicon octicon-file" viewBox="0 0 12 16" version="1.1" width="12" height="16" aria-hidden="true"><path fill-rule="evenodd" d="M6 5H2V4h4v1zM2 8h7V7H2v1zm0 2h7V9H2v1zm0 2h7v-1H2v1zm10-7.5V14c0 .55-.45 1-1 1H1c-.55 0-1-.45-1-1V2c0-.55.45-1 1-1h7.5L12 4.5zM11 5L8 2H1v12h10V5z"></path></svg>
+            <img class="spinner" alt="" src="https://assets-cdn.github.com/images/spinners/octocat-spinner-32.gif" width="16" height="16">
+          </td>
+          <td class="content">
+            <span class="css-truncate css-truncate-target"><a class="js-navigation-open" title="segmented.Rmd" id="cc9598d2147ed3f3565866b2b474dcb8-a7fca643386baddf5180172b5a705414ec30565a" href="/arhwiegman/Bio381_2018/blob/master/HW11/segmented.Rmd">segmented.Rmd</a></span>
+          </td>
+          <td class="message">
+            <span class="css-truncate css-truncate-target">
+                  <a data-pjax="true" title="regressionfunctions" class="message" href="/arhwiegman/Bio381_2018/commit/0f84d087428dc111f9d7127af9cd0f7423a43999">regressionfunctions</a>
+            </span>
+          </td>
+          <td class="age">
+            <span class="css-truncate css-truncate-target"><time-ago datetime="2018-04-13T03:19:54Z" title="Apr 12, 2018, 11:19 PM EDT">6 days ago</time-ago></span>
+          </td>
+        </tr>
+    </tbody>
+ </html>

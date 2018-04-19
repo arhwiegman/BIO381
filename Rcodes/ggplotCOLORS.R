@@ -40,7 +40,7 @@ print(.)
 myPaleRed <- . 
 p1 + geom_boxplot(fill=myPaleRed)
 
-#use change saturation of grey function in sequence  
+#change saturation of grey function in sequence  
 p1 + geom_boxplot(fill=gray(seq(from=0.1, to=0.9,length=5)))
 
 # make a dataframe with control and treatment factors

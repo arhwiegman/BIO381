@@ -1,0 +1,156 @@
+---
+title: 'Unlock the true power of your computer with algorithmic character manipulation'
+subtitle: 'examples of regular expressions operations in `R` using the `stringr` package'
+date: 'May 3, 2018'
+author: Adrian Wiegman
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Why learn to manipulate text in a computer program?
+
+- Humans communicate and organize systems with symbols
+- Most computer programs are written with simple text
+- Most computers read like humans do, left to write, top to bottom. 
+- If you can algorithmically manipulate a line of text you can automate just about anything!
+- ... or just free up your work day.
+
+![*Activate your inner Homer Simpson*](homerhardatwork.jpg)
+
+## Lesson Objective: 
+
+**Use regular expressions (REGEX) with `stringr` to automate text searches and execute computer commands**
+
+## Examples
+
+Formatting, Cleaning & Dis/aggregating Copious Data
+	- (`readxl`)[https://github.com/tidyverse/readxl]
+	- (`readr`)
+	
+"Scraping" data from the internet
+	- (`scholar`)[https://cran.r-project.org/web/packages/scholar/scholar.pdf]
+  - (`rvest`)[https://cran.r-project.org/web/packages/scholar/scholar.pdf]
+
+## Resources for Today’s Lesson
+
+
+- Exercise 1: `stringr` REGEX practice
+  - [cheatsheet](strings.pdf)
+  
+- Exercise 2: 'Web Sraping' (searching through html files)
+  - [basic html](stringr_lesson.html)
+  - [this lesson](strings_lesson.html)
+  - [github repo](strings_lesson.html)
+  
+- Exercise 3: Manipulating Copious Data 
+  - [Workbook1](stringr_Workbook1.xlsx)
+  - [Workbook2](Workbook2.xlsx)
+
+
+## Exercise 1: `stringr` REGEX practice
+
+**OBJECTIVES:**
+Review the stringr cheatsheet
+Practice using `stringr` by manipulating a list of files in the working directory
+
+```{R}
+# `stringr` practice using files in the working directory
+# Adrian Wiegman
+# 20180418
+
+#Load Packages----------
+library(stringr)
+
+#Manage Directories-----------
+# return a character string with the path of the working directory
+path = getwd()
+# sets the working directory to path specified in character string
+newfolder = 'stringr_demo'
+dir.create(newfolder)
+#note dir.create() makes a new folder
+setwd(paste(path,newfolder,sep="/")
+# returns 
+myDir <- dir() 
+
+#
+allFiles <- str_view_all()
+  
+myFiles <-  str_extract_all(
+
+allFolders <- str_view_all()
+
+myFolder <- str_extract_all(
+
+file.copy(from=filestocopy, to=newfolder, overwrite = recursive, recursive = FALSE,
+          copy.mode = TRUE, copy.date = FALSE)
+#https://stackoverflow.com/questions/10299712/copying-list-of-files-from-one-folder-to-other-in-r
+file.remove(filestocopy)
+```
+
+
+
+
+**Note on `regex` with R:**
+
+R uses different REGEX commands than most programs, for example there is no NOT escape character. 
+
+
+## Exercise 2: Manipulating Copious Data 
+
+**Objectives**
+
+- Batch Read xlsx files into R
+- Remove special characters and unwanted data
+- Read text extract data.frame
+- Save new file as csv
+
+```
+<!DOCTYPE html>
+<html>
+
+	<body>
+	
+	  <a href="https://www.google.com">This is a link to Google</a>
+	  
+  </body>
+  
+</html>
+```
+
+
+```{R}
+library(readxl)
+library(readr)
+library(stringr)
+
+#[insert functions and code]
+#how to download a file from the internet
+#https://stackoverflow.com/questions/48612676/how-to-download-entire-repository-from-github-using-r
+```
+
+**ADDITIONAL RESOURCES:**
+[More on working with MS excel files in R](https://www.datacamp.com/community/tutorials/r-tutorial-read-excel-into-r])
+
+
+## Exercise 3: 'Web Sraping' (searching through html)
+
+**OBJECTIVES:**
+
+- Go to a website
+- Inspect the structure of an html file 
+- Determine the data you want 
+- Use `stringr` to extract data
+
+```{R}
+library(rvest)
+library(scholar)
+library(stringr)
+
+#[insert functions and code]
+```
+
+**ADDITIONAL RESOURCES:**
+[more on web scraping with R](https://idc9.github.io/stor390/notes/web_scraping/DR_wrangling.html)
