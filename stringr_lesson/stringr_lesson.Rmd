@@ -107,7 +107,39 @@ R uses different REGEX commands than most programs, for example there is no NOT 
 - Read text extract data.frame
 - Save new file as csv
 
+
+```{R}
+library(readxl)
+library(readr)
+library(stringr)
+
+#[insert functions and code]
+#how to download a file from the internet
+#https://stackoverflow.com/questions/48612676/how-to-download-entire-repository-from-github-using-r
+
+
+
 ```
+
+**ADDITIONAL RESOURCES:**
+[More on working with MS excel files in R](https://www.datacamp.com/community/tutorials/r-tutorial-read-excel-into-r])
+
+
+
+
+
+## Exercise 3: 'Web Sraping' (searching through html)
+
+**OBJECTIVES:**
+
+- Go to a website
+- Inspect the structure of an html file 
+- Determine the data you want 
+- Use `stringr` to extract data
+
+**Basic Text Structure of HTML**
+
+```html
 <!DOCTYPE html>
 <html>
 
@@ -120,31 +152,7 @@ R uses different REGEX commands than most programs, for example there is no NOT 
 </html>
 ```
 
-
-```{R}
-library(readxl)
-library(readr)
-library(stringr)
-
-#[insert functions and code]
-#how to download a file from the internet
-#https://stackoverflow.com/questions/48612676/how-to-download-entire-repository-from-github-using-r
-```
-
-**ADDITIONAL RESOURCES:**
-[More on working with MS excel files in R](https://www.datacamp.com/community/tutorials/r-tutorial-read-excel-into-r])
-
-
-## Exercise 3: 'Web Sraping' (searching through html)
-
-**OBJECTIVES:**
-
-- Go to a website
-- Inspect the structure of an html file 
-- Determine the data you want 
-- Use `stringr` to extract data
-
-```{R}
+```{r}
 library(rvest)
 library(scholar)
 library(stringr)
