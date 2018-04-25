@@ -1,0 +1,82 @@
+---
+title: "Homework 11"
+author: "Adrian Wiegman"
+date: "April 4, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+### 1. Examine a function useful to your research
+I am examining the Langmuir Equation: 
+
+$$
+S = \frac{S_{max}kC}{1+kC} + S_0
+$$
+
+This model which describes the relation between $S$ (mg kg^-1^), the quantity of phosphorus sorbed to soil and $C$ (mg L^-1^), the concentration of dissolved phosphorus in soil porewater. The model assumes there is a limited capacity of the soils to adsorb sediment resulting in a maximum quantity of sorbed soil phosphorus, $S_{max}$ (mg kg^-1^). $S_{min}$ is the amount of P sorbed to the soil at when $C$ is neglibable The physical soil properties (such as grain size) and biogeochemical regulators (such as pH, eH, tempurature, and OM) affect $S_{max}$ and $S_{min}$; The concentration Al and Fe in soil is a very strong predictor of $S_{max}$. $k$ (L mg^-1^), is a coefficient that describes the energy of adsorbtion, which has low variability and is often assumed constant (Reddy & DeLaune 2011; Reddy et al. 1999). 
+
+Below I examine the effects of changing $S_{max}$ and $k$ in the Langmuir equation, by iteratavely changing values in a `while` loop, and plot constructing a `data.frame` of the model to plot the results with `ggplot`. 
+
+```{R}
+#########################################################
+# FUNCTION: Langmuir
+# half saturation equation for sediment P concentration
+# as a function of dissolved P concentration determined 
+# during sorption isotherm experiments with soil cores.
+# INPUT: C - (mg L^-1) concentration of dissolve P in soil porewater
+#        k - (L mg^-1) adsorption energy coefficient
+#        Sm - (mg kg^-1) maximum soil p concentration 
+#        So - (mg kg^-1) minimum soil p concentration 
+# OUTPUT: S - vector
+#-------------------------------------------------------
+Langmuir <- function(C=0.1:100,k=0.5,Sm=1,So=0.1){
+  S <- (Sm*k*C)/(1+k*C) - So
+return(S)
+}
+head(Langmuir())
+
+###################################################
+# FUNCTION: LangmuirPlot
+# half saturation equation for sediment P concentration
+# as a function of dissolved P concentration determined 
+# during sorption isotherm experiments with soil cores.
+# INPUT: C - (mg L^-1) concentration of dissolve P in soil porewater
+#        k - (L mg^-1) adsorption energy coefficient
+#        Sm - (mg kg^-1) maximum soil p concentration 
+#        So - (mg kg^-1) minimum soil p concentration 
+# OUTPUT: ggplot of langmuir equation
+#-------------------------------------------------
+LangmuirPlot <- function(C=seq(0.1,20,0.5),k=0.5,Sm=1,So=0.1){
+  plot(x=C,y=Langmuir(C,k,Sm,So),type="l",xlab="Dissolved P Conc. (mg/L)",ylab="S",ylim=c(0,10))
+  mtext(paste("Sm =", Sm," So =",So," k =",k),cex=0.7) 
+  return()
+}
+LangmuirPlot()
+
+##############################################
+# FUNCTION: SA_output
+# Summary stats for spieces-area power function
+# INPUT: vector of predicted species richness
+# OUTPUT: list of max-min, coefficient of variation
+#--------------------------------------------------
+SA_output <- function(S=runif(1:10)){
+  sumStats <- list(SGain=max(S)-min(S), SCV=sd(S)/mean(S))
+  return(sumStats)
+}
+SA_output()
+
+```
+
+### 2. Conduct a randomization test for some of your own data and ensure the test is repeatable by setting the randomization seed
+
+For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
+
+```{R}
+
+```
+
+
+### 3. Compare the results of the randomization test with the results a standard statistical test used in R 

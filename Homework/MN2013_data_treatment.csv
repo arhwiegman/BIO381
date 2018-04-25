@@ -1,0 +1,33 @@
+# Data from Mcmillan and Noe 2013 Ecosystems (2013) 16: 75–94 DOI: 10.1007/s10021-012-9597-0 
+# table 1 data organized by treatment (tX)
+# t1 = Levee t2 = Backswamp t3 = Toe-slope
+# n_t1 = 10 n_t2 = 10 n_t3 = 8
+meas                              , unit           ,avg_t1 ,sd_t1     ,avg_t2 ,sd_t2   ,avg_t3 ,sd_t3
+Water elevation above soil surface, (m)            , -0.93 ,  0.12   , -0.67 ,   0.16  , -1.15 ,   0.15
+Hydroperiod                       , (days)         , 0.5   ,   0.3   , 44.8  ,   32.1  , 0.5   ,   0.2
+Sediment accretion                , (mm y-1)       , 14.9  ,   5.1   , 0.2   ,   4.9   , 1.7   ,   1.0
+SRP loading to soil surface       , (mol P m-2 y-1), 8.7   ,   1.5   , 9.2   ,   1.7   , 12.3  ,   1.7
+NO3- loading to soil surface      , (mol N m-2 y-1), 39    ,   6     , 67    ,   14    , 100   ,   53
+NH4+ loading to soil surface      , (mol N m-2 y-1), 12    ,   2     , 20    ,   4     , 15    ,   2
+Soil d50                          , (lm)           , 11    ,   0     , 10    ,   1     , 10    ,   0
+Soil coarse sand                  , (>250 lm %)    , 3     ,   1     , 2     ,   1     , 4     ,   1
+Soil fine sand                    , (50–250 lm %)  , 7     ,   1     , 9     ,   2     , 7     ,   1
+Soil silt                         , (2–50 lm %)    , 76    ,   1     , 71    ,   2     , 72    ,   1
+Soil clay                         , (<2 lm %)      , 14    ,   1     , 18    ,   3     , 17    ,   1
+Soil bulk density                 , (g cm-3)       , 0.87  ,   0.03  , 0.83  ,   0.06  , 0.79  ,   0.03
+Soil moisture WFPS                , (%)            , 53    ,   4     , 75    ,   5     , 67    ,   5
+Soil pH                           , (pH)           , 5.79  ,   0.04  , 5.62  ,   0.04  , 5.37  ,   0.14
+Soil temperature                  , (C))           , 12.2  ,   0.1   , 12.0  ,   0.1   , 12.0  ,   0.1
+Soil total C                      , (%)            , 2.8   ,   0.3   , 3.4   ,   0.6   , 4.3   ,   0.3
+Soil total N                      , (%)            , 0.20  ,   0.02  , 0.24  ,   0.04  , 0.30  ,   0.02
+Soil total P                      , (lg g-1)       , 362   ,   38    , 509   ,   66    , 630   ,   44
+Soil KCl-extractable SRP          , (lmol P cm-3)  , 0.0030,   0.0005, 0.0029,   0.0004, 0.0052,   0.0010
+Soil KCl-extractable NO3-         , (lmol N cm-3)  , 0.13  ,   0.02  , 0.17  ,   0.05  , 0.19  ,   0.05
+Soil KCl-extractable NH4+         , (lmol N cm-3)  , 0.10  ,   0.02  , 0.13  ,   0.03  , 0.14  ,   0.02
+Soil worm mass                    , (g ww m-2)     , 4.1   ,   2.1   , 2.4   ,   1.4   , 8.8   ,   4.0
+Litterfall C flux                 , (mg C m-2 d-1) , 687   ,   46    , 579   ,   41    , 615   ,   32
+Litterfall N flux                 , (mg N m-2 d-1) , 19.0  ,   2.0   , 16.4  ,   1.6   , 17.0  ,   0.6
+Litterfall P flux                 , (mg P m-2 d-1) , 1.66  ,   0.16  , 1.45  ,   0.13  , 1.56  ,   0.08
+Herbaceous C flux                 , (mg C m-2 d-1) , 38.2  ,   15.3  , 48.2  ,   18.0  , 27.2  ,   9.9
+Herbaceous N flux                 , (mg N m-2 d-1) , 1.91  ,   0.68  , 2.24  ,   0.74  , 1.45  ,   0.46
+Herbaceous P flux                 , (mg P m-2 d-1) , 0.177 ,   0.068 , 0.232 ,   0.083 , 0.141 ,   0.047

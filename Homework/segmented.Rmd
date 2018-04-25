@@ -1,0 +1,74 @@
+---
+title: "segmented"
+author: "Adrian Wiegman"
+date: "April 11, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Segmented Line regression 
+# https://www.r-bloggers.com/r-for-ecologists-putting-together-a-piecewise-regression/
+```{r}
+library(TeachingDemos)
+char2seed("rotten eggs")
+x <- c(1:10, 13:22)
+y <- numeric(20)
+## Create first segment
+y[1:10] <- 20:11 + rnorm(10, 0, 1.5)
+## Create second segment
+y[11:20] <- seq(11, 15, len=10) + rnorm(10, 0, 1.5)
+## Plot it
+par(mar=c(4,4,1,1)+0.2)
+plot(x,y, ylim=c(5, 20), pch=16)
+```
+
+from eyeballing the plot we can see that the breakpoint is between 7 and 19.
+```{r}
+#create a variable to hold integer values of breakpoints
+breaks <- x[which(x >= 9 & x <= 17)]
+
+#iteratively search for model with lowest mean squared error
+mse <- numeric(length(breaks))
+for(i in 1:length(breaks)){
+  . <- breaks[i]
+  piecewise1 <- lm(y ~ x*(x < .) + x*(x>=.))
+  mse[i] <- summary(piecewise1)$sigma
+}
+str(mse)
+library(ggplot2)
+plot(x=breaks,y=mse)
+```
+The break point could easily be 13 or 17
+```{r}
+. <- breaks[which(mse==min(mse))]
+piecewise2 <- lm(y ~ x*(x < .) + x*(x > .))
+summary(piecewise2)
+```
+
+
+## Segmented Package
+```{r}
+library(segmented)
+df <- data.frame(x=x,y=y)
+#fit.glm<- glm(y~x,weight=x,family=binomial,data=df)
+fit.lm <- lm(y~x)
+fit.seg <- segmented(fit.lm, seg.Z = ~x, psi=14)
+summary(fit.seg)
+#plot the segmented model
+plot(x,y, pch=16, ylim=c(5,20))
+plot(fit.seg, add=T)
+#fit.seg <- segmented(fit.glm, seg.Z=~age,psi=25)
+
+#extract parameters
+xb = summary.segmented(fit.seg)$psi [1,2]
+a0 = fit.seg$coefficients[1]
+b0 = fit.seg$coefficients[2] # slope for x < xb (break-point)
+b1 = fit.seg$coefficients[3] - b0 # slope for x >= xb (break-point)
+#rsq = fit.seg
+# y = a0 + b0*x for x < bp
+# y = a1 + b1*x for x >= bp
+```
+
