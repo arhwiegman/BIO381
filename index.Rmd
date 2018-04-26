@@ -12,32 +12,67 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## R Package Demos
 
- - [`stringr` lesson](stringr_lesson/stringr_lesson.html)
+[`stringr` lesson](stringr_lesson/stringr_lesson.html)
+
+  - STATUS: incomplete,20180426
+  
+    - need to finalize data sources and code examples
 
 ## Homework
- - [Homework 2](HW2/homework02.html)
- - [Homework 3](HW3/homework03.pdf)
- - [Homework 4](HW4/homework04.html)
- - [Homework 5](HW5/homework05.html)
- - [Homework 6](HW6/homework06.html)
- - [Homework 7](HW7/homework07.html)
- - [Homework 9](HW9/homework09.html)
+Homework 1: setup BIO381 webpage
+
+[Homework 2](Homework/homework02.html): Flow charts and structural equation models
+
+[Homework 3](Homework/homework03.pdf): Beamer presentation
+
+[Homework 4](Homework/homework04.html): Arrithmetic and Vector operations in R
+
+[Homework 5](Homework/homework05.html): Regular expressions
+
+[Homework 6](Homework/homework06.html): Probability distributions on hydrologic data
+
+[Homework 7](Homework/homework07.html): Functional programming
+
+[Homework 9](Homework/homework09.html): Improved functional programing 
+
+  - STATUS: incomplete,20180426
+  
+    - bug in plotting and multiple regression function
+    
+[Homework 10](Homework/homework10.html): Batch processing of files
+
+[Homework 11](Homework/homework11.html): Visualizing mathematical models
+
+  - STATUS: incomplete,20180426
+  
+    - Need to finalize plotting function 
+    
+[Homework 12](Homework/homework12.html): Advanced plotting with ggplot2 and patchwork
+
+  - STATUS: incomplete,20180426
+  
+    - Need to select dataset to make plots with
 
 ## Info
 
 Graduate Research Assisstant
 
-*Affiluations:*
 University of Vermont
+
   - Rubenstein School for Environment and Natural Resources
+  
   - Gund Institute for Environment
+  
   - Nutrient Cycling and Ecological Design Lab
+  
 
 *Office:* 
-2nd Floor, Johnson House 617 Main Street, Burlington VT
+
+204 Johnson House, 617 Main Street, Burlington VT
 
 *Email:* 
-adrian.wiegman@gmail.com
+
+adrian.wiegman@uvm.edu
 
 ## Bio
 
@@ -47,6 +82,7 @@ Adrian is a PhD student in the Nutrient Cycling and Ecological Design Lab at UVM
 <img src="Adrian.jpg" width="400" height="200" />
 
 ## Find Adrian Around the Web 
+
 - [**ResearchGate**](https://www.researchgate.net/profile/Adrian_Wiegman)
 - [**Gund Institute**](https://www.uvm.edu/gund/profiles/adrian-wiegman)
 - [**Nutrient Cycling and Ecological Design Lab**](http://nced.weebly.com/team.html)

@@ -47,11 +47,11 @@ In this assignment I am modifying the functions from [Homework 7](BIO381/HW7/hom
 #             df - data frame of x and y values
 #--------------------------------------
 simulateModel <- function(
-                    X = data.frame(X1= rnorm(10),X2=rnorm(10)), #number of samples
+                    Xs = data.frame(X1= rnorm(10),X2=rnorm(10)), #number of samples
                     model = '0 + 1*X1 + 2*X2 + rnorm(length(X1),0,1)'
                     ){
-  y <- with(X, eval(parse(text=model)))
-  df  <- cbind(y=y,X)
+  Y <- with(Xs, eval(parse(text=model)))
+  df  <- cbind(Y=Y,Xs)
   return(df)
 } 
 print(simulateModel())
@@ -65,8 +65,8 @@ print(simulateModel())
 #output: a list of key results
 #--------------------------------------
 MLR_results <- function(df = NULL, model=NULL){
-  if(is.null(df)) df<-data.frame(y=runif(15),x1=runif(15),x2=runif(15))
-  if(is.null(model)) model <- y~x1*x2
+  if(is.null(df)) df<-data.frame(y=runif(15),X1=runif(15),X2=runif(15))
+  if(is.null(model)) model <- Y~X1*X2
   . <- lm(model, data=df) # produces results as a list
   betas <- .$coefficients # vectorized regression outputs
   betaPs <- summary(.)$coefficients[1:nrow(summary(.)$coefficients),4]
@@ -106,7 +106,8 @@ ggplotModel <- function(df=NULL,model=NULL,saveas=paste0('modelplot',Sys.Date(),
   df <- cbind(df,y_m)
   p <- ggplot(data=df,mapping=aes(y=df[,1],x=df[,2]))+ geom_point()+
          labs(title=paste('y =',model),x=colnames(df)[2],y=colnames(df)[1])+
-         geom_line(data=df, mapping=aes(y=y_m,x=df[,2]),color="Blue")
+         geom_line(data=df, mapping=aes(y=y_m,x=df[,2]),color="Blue")p <- ggplot(data=df,mapping=aes(y=df[,1],x=df[,2]))+ geom_point()+
+         geom_line(data=df, mapping=aes(y=y_m,x=df[,2]),color="Red")
   print(p)
   ggsave(saveas,p)
 }
@@ -121,16 +122,18 @@ alpha <- 0.01 #significance level - 95% confidence
 p <- 1 #p value of statistical test
 b0 <- 0 # b0 is the y-intercept parameter
 b1 <- 1 #b1 is the slope parameter
-sd <- sqrt(25) # sample error or variance
-n = 2 #number of samples
+b2 <- 1.25 #b2 is a multiplier of the slope parameter
+sd <- 25 # standard error
+n = 5 #number of samples
 sims = 1 # number of simulations
-Xrange = 100
+X1range = 100
 pVals <- rep(NULL,n)
-m <- "b0 + b1*X1*rnorm(length(X1),0,sd)"
-myModel <- paste0(b0," + ",b1,"*X1*rnorm(length(X1),0,",sd,")")
-myFormula <- 'Y~X1' # a string containing an expression of type formula 
+m <- "b0 + b1*X1 + b2*X1*X2 + rnorm(length(X1),0,sd)"
+myRandModel <- paste0(b0,' + ',b1,'*X1 + ',b2,'*X1*X2 + rnorm(length(X1),0,',sd,')')
+myModel <- stringr::str_split(myRandModel,'\\+\\s[:alpha:]{4}.*')[[1]][1]
+myFormula <- 'Y~X1+X1:X2' # a string containing an expression of type formula 
 # printing model to console
-cat("y = ",m," = ",myModel,"\n")
+cat("y = ",m,"\n y = ",myRandModel,"\n","Use the following `formula` To fit this model with `lm()`: \n",myFormula)
                         
 
 # Objective 1:
@@ -139,23 +142,30 @@ while (p >= alpha){
   n <- n + 1
   # simulate random model 'sims' times
   for (i in seq(1,sims)){
-    #SPECIFY MODEL IN RELATION TO PARAMETERS (b0...bn,sd,etc)
-    # this is done in for loop incase parameter values are being tested
-    myModel <- paste0(b0," + ",b1,"*X1*rnorm(length(X1),0,",sd,")")
+    
+    #SPECIFY MODEL AS A STRING WITH PARAMETERS VALUES (b0...bn,sd,etc)
+    # myModel is copies from above incase parameter values are being tested
+    # myRandModel <- paste0(b0,' + ',b1,'*X1 + ',b2,'*X1*X2 + rnorm(length(X1),0,',sd,')')
+    # myModel <- stringr::str_split(myRandModel,'\\+\\s[:alpha:]{4}.*')[[1]][1]
     #SPECIFY RANGE OF X VARIABLES
-    X1 <- eval(parse(text=paste0("runif(",n,")*",Xrange)))
-    X2 <- NA*n
-    #create a dataframe containing Y and X vectors, where Y = myModel(X)
-    myData <- simulateModel(X = data.frame(X1=X1,X2=X2), model = myModel)
+    # X1 a random uniform number between 0 and X1range
+    X1 <- eval(parse(text=paste0("runif(",n,")*",X1range)))
+    # if X1 is greater than random number with mean of 20 
+    # then set X2 equal to 1 else set equal to zero
+    X2 <- as.numeric(X1 > rnorm(length(X1),20,5))
+    
+    #create a dataframe containing Y and X vectors, where Y = myModel(Xs)
+    myData <- simulateModel(Xs = data.frame(X1=X1,X2=X2), model = myRandModel)
+    
     #get regression stats
-    myResults <- MLR_results(myFormula, myData)
+    myResults <- MLR_results(myData,formula(myFormula))
     if (i == 1){
       pVals[i]<- myResults['p_slope']
     }else {
     pVals[i]<- myResults['p_slope']
     }
   }
-  p <- mean(pVals)
+  p <- median(pVals)
   #p <- mean(pVals<alpha)
 }
 print(c("number of samples"=n))
