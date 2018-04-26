@@ -56,8 +56,8 @@ ggmap(YD)
 
 # Get a raster object, overset it with a shapefile, and add GPS coordinates
 # 1. Get the map of VT
-VT <- get_map("Salisbury,Vermont",zoom=8,maptype = "roadmap",source="google")
-VTMap <- ggmap(VT,extent = "normal")
+. <- get_map("Salisbury,Vermont",zoom=8,maptype = "roadmap",source="google")
+VTMap <- ggmap(.,extent = "normal")
 VTMap
 
 # Reading in a VT database file of town boundaries from Vermont Open Geodata Portal (free!)
