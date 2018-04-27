@@ -14,15 +14,20 @@ knitr::opts_chunk$set(echo = TRUE)
 ```{r}
 library(TeachingDemos)
 char2seed("rotten eggs")
-x <- c(1:10, 13:22)
+x <- rnorm(20,20,10)
 y <- numeric(20)
+theta <- 10
+b0a <- 0
+b1a <- 2
+b0b <- 4
+b1b <- b1a + b0a
 ## Create first segment
-y[1:10] <- 20:11 + rnorm(10, 0, 1.5)
-## Create second segment
-y[11:20] <- seq(11, 15, len=10) + rnorm(10, 0, 1.5)
-## Plot it
-par(mar=c(4,4,1,1)+0.2)
-plot(x,y, ylim=c(5, 20), pch=16)
+Ma <- "0 + 2*x*(x<20)"
+Mb <- "(0 + 2*20 + 6*x*(x>20))"
+E <- "rnorm(10, 0, 5)"
+Y <- eval(parse(text=paste(M1,M2,E,sep="+")))
+y <- (b0 + 2*x)*(x<theta) + (-6*theta + 2*theta + 6*x)*(x>20) + rnorm(10, 0, 5)
+plot(x,y, pch=16)
 ```
 
 from eyeballing the plot we can see that the breakpoint is between 7 and 19.

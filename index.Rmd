@@ -33,11 +33,7 @@ Homework 1: setup BIO381 webpage
 
 [Homework 7](Homework/homework07.html): Functional programming
 
-[Homework 9](Homework/homework09.html): Improved functional programing 
-
-  - STATUS: incomplete,20180426
-  
-    - bug in plotting and multiple regression function
+[Homework 9](Homework/homework09_segmented.html): Improved functional programing 
     
 [Homework 10](Homework/homework10.html): Batch processing of files
 

@@ -37,7 +37,8 @@ print(quantile(x=xData,probs=c(0.025,0.975)))
 #input fColor = fill color
 #output = summary of x data 
 #output = 95% confidence interval
-iHisto <- function(xData=runif(1000),fColor='salmon') {z <-qplot(x=factor(xData),color=I('black'),fill=I(fColor),xlab='X',boundary=0) 
+iHisto <- function(xData=runif(1000),fColor='salmon') {
+  z <-qplot(x=factor(xData),color=I('black'),fill=I(fColor),xlab='X',boundary=0) 
 print(z)
 print(summary(xData))
 print(quantile(x=xData,probs=c(0.025,0.975)))

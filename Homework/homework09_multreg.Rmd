@@ -118,13 +118,13 @@ ggplotModel()
 # Main Program----------------------------------------
 
 # set global parameters
-alpha <- 0.01 #significance level - 95% confidence
+alpha <- 0.001 #significance level - 95% confidence
 p <- 1 #p value of statistical test
 b0 <- 0 # b0 is the y-intercept parameter
 b1 <- 1 #b1 is the slope parameter
 b2 <- 1.25 #b2 is a multiplier of the slope parameter
 sd <- 25 # standard error
-n = 20 #number of samples
+n = 30 #number of samples
 sims = 1 # number of simulations
 X1range = 100
 pVals <- rep(NULL,n)
