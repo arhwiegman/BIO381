@@ -45,72 +45,6 @@ file.remove.warning <- function(x=NULL){
 }
 file.remove.warning()
 
-#findSTARTwd
-# navigates to START directory from working directory
-# only works if getwd() is inside 
-findSTARTwd <- function(START='C:/'){
-  require(stringr)
-  repeat {
-    x <- getwd()
-    
-    #control structures and feedback
-    cat('...searching for',START,' in ',x,'....\n')
-    if (x==START)
-      cat('COMPLETE!')
-    return (x)
-    if (str_length(START)>str_length(x))stop(START,' not in ',x)
-    if (!str_detect(START,"^C:/")) stop(cat('root',x,'not present in START',START))
-    if (x=="C:/") stop(cat('reached root',x,'unable to find START:',START))
-    
-    #Function body
-    # get names of subdirectories
-    x <- str_split(x,"/") %>% unlist()
-    # get path minus working directory folder 
-    x <- str_c(.[-length(x)],collapse='/')
-    setwd(x)
-  }
-}
-findSTARTwd()
-
-# file.remove.warning
-# insert warning requiring user feedback before deleting files
-file.remove.warning <- function(x=NULL){
-  xfiles <- paste(x,collapse=', ')
-  warning <- paste("WARNING: Do you want to delete",xfiles,"from the following path? \n",getwd())
-  . <- menu(c("Yes", "No"),title=warning)
-  if(.!=1){stop('function aborted')}else{
-    cat("deleting files...")
-    file.remove(x)
-  }
-}
-file.remove.warning()
-
-#findSTARTwd
-# navigates to START directory from working directory
-# only works if getwd() is inside 
-findSTARTwd <- function(START='C:/'){
-  require(stringr)
-  repeat {
-    x <- getwd()
-    
-    #control structures and feedback
-    cat('...searching for',START,' in ',x,'....\n')
-    if (x==START)
-      cat('COMPLETE!')
-    return (x)
-    if (str_length(START)>str_length(x))stop(START,' not in ',x)
-    if (!str_detect(START,"^C:/")) stop(cat('root',x,'not present in START',START))
-    if (x=="C:/") stop(cat('reached root',x,'unable to find START:',START))
-    
-    #Function body
-    # get names of subdirectories
-    x <- str_split(x,"/") %>% unlist()
-    # get path minus working directory folder 
-    x <- str_c(x[-length(x)],collapse='/')
-    setwd(x)
-  }
-}
-
 # parent.dir()
 # returns the parent of working directory
 parent.dir <- function(){
@@ -262,21 +196,11 @@ file.remove.warning(dir()) #warns before removing files
 dir()
 
 #step out of working directory and delete .tmp files  
-dir()
-
-# parent.dir()
 # returns the parent of working directory
-parent.dir <- function(){
-  x <- getwd()
-  # get names of subdirectories
-  x <- str_split(x,"/") %>% unlist()
-  # get path minus working directory folder 
-  x <- str_c(x[-length(x)],collapse='/')
-  return(x)
-}
-parent.dir()
 setwd(parent.dir())
 getwd()
+
+
 file.remove.warning(dir())
 dir()
 cat(dir())
