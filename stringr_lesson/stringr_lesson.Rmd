@@ -28,7 +28,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 Formatting, Cleaning & Dis/aggregating Copious Data
 	- (`readxl`)[https://github.com/tidyverse/readxl]
-	- (`readr`)
+	- (`readr`)[https://github.com/tidyverse/readr]
 	
 "Scraping" data from the internet
 	- (`scholar`)[https://cran.r-project.org/web/packages/scholar/scholar.pdf]
@@ -39,7 +39,9 @@ Formatting, Cleaning & Dis/aggregating Copious Data
 
 - Exercise 1: `stringr` REGEX practice
   - [cheatsheet](strings.pdf)
-  
+  - [regex](https://github.com/tidyverse/stringr)
+  - [regex](http://r4ds.had.co.nz/strings.html)
+  http://r4ds.had.co.nz/strings.html
 - Exercise 2: 'Web Sraping' (searching through html files)
   - [basic html](stringr_lesson.html)
   - [this lesson](strings_lesson.html)
