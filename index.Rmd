@@ -12,11 +12,9 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 ## R Package Demos
 
-[`stringr` lesson](stringr_lesson/stringr_lesson.html)
+[`stringr` lesson markdown](stringr_lesson/stringr_lesson.html)
 
-  - STATUS: incomplete,20180426
-  
-    - need to finalize data sources and code examples
+[`stringr` R script](stringr_lesson/stringr_demo.R)
 
 ## Homework
 Homework 1: setup BIO381 webpage
