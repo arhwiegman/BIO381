@@ -314,7 +314,7 @@ $(document).ready(function () {
 
 <div id="tired-of-managing-data-by-hand" class="section level2">
 <h2>Tired of managing data by hand?</h2>
-<p>Have you ever spent hours combing over data, copying and pasting, only to import into R and still turn an ERROR? Do you work with data from online resources, externally generated/mantained datasets, dataloggers, analytical instruments, etc…?Do you work with data in text form? Would you like to conduct an reproducable and exhaustive text/web search?</p>
+<p>Have you ever spent hours combing over data, copying and pasting, only to import into R and still turn an ERROR? Do you work with data from online resources, externally generated/mantained datasets, dataloggers, analytical instruments, etc…? Do you work with data in text form? Would you like to conduct a reproducable and exhaustive text/web search?</p>
 <p><em>If you answered yes to any of these, then this lesson is for you!!!</em></p>
 </div>
 <div id="why-learn-to-manipulate-text-in-a-computer-program" class="section level2">
@@ -379,7 +379,15 @@ $(document).ready(function () {
 </div>
 <div id="resources-for-string-manipulation-in-r" class="section level2">
 <h2>Resources for String Manipulation in R</h2>
-<p><a href="http://stringr.tidyverse.org/articles/stringr.html"><code>stringr</code> on the Tidyverse website</a> <a href="strings.pdf"><code>stringr</code> cheat sheet</a> <a href="https://github.com/tidyverse/stringr"><code>stringr</code> github page</a> <a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf">RegEx cheat sheet</a> Handling Strings in R by Gaston Sanchez <a href="http://www.gastonsanchez.com/r4strings/character-sets.html">ebook</a> <a href="https://github.com/gastonstat/r4strings/">github</a> R for Data Science by Garrett Grolemund and Hadley Wickham, <a href="http://r4ds.had.co.nz/strings.html">Chapter 14: Strings</a> <a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">CRAN <code>stringr</code> vingette</a></p>
+<ul>
+<li><a href="http://stringr.tidyverse.org/articles/stringr.html"><code>stringr</code> on the Tidyverse website</a></li>
+<li><a href="strings.pdf"><code>stringr</code> cheat sheet</a></li>
+<li><a href="https://github.com/tidyverse/stringr"><code>stringr</code> github page</a></li>
+<li><a href="https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf">R RegEx cheat sheet</a></li>
+<li>Handling Strings in R by Gaston Sanchez <a href="http://www.gastonsanchez.com/r4strings/character-sets.html">ebook</a> <a href="https://github.com/gastonstat/r4strings/">github</a></li>
+<li>R for Data Science by Garrett Grolemund and Hadley Wickham, <a href="http://r4ds.had.co.nz/strings.html">Chapter 14: Strings</a></li>
+<li><a href="https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html">CRAN <code>stringr</code> vingette</a></li>
+</ul>
 </div>
 <div id="lesson" class="section level2">
 <h2>Lesson:</h2>
@@ -468,10 +476,13 @@ parent.dir()</code></pre>
 <pre class="r"><code># II. Preliminaries ----------------------------------------------
 set.seed(1) #for repeatable random numbers</code></pre>
 <p>Detach non-base R packages</p>
-<pre class="r"><code>pkg.names() #I.2
+<pre class="r"><code>pkg.names 
+pkg.names() #I.2
+detach.pkgs 
 detach.pkgs() #I.4</code></pre>
 <p>load a vector of packages</p>
-<pre class="r"><code>require.pkgs(c('stringr','magrittr','openxlsx'))#I.3
+<pre class="r"><code>require.pkgs 
+require.pkgs(c('stringr','magrittr','openxlsx'))#I.3
 pkg.names()</code></pre>
 </div>
 <div id="stringr-practice" class="section level3">
@@ -484,6 +495,7 @@ pkg.names()</code></pre>
 s1 &lt;- pkg.names()
 s1
 # capture.output() of console as character vector 
+pkg.info
 s2 &lt;- capture.output(pkg.info()) #I.1
 s2 
 
@@ -492,6 +504,8 @@ s3 &lt;- sample(s2,5,replace=TRUE)
 s3</code></pre>
 <p>TIPS: Every function starts with <code>str_</code>. Most functions have logical names. ALWAYS PRINT TO THE CONSOLE FIRST (to test your search). ALWAYS STORE YOUR DATA IN TEMPORARY VARIABLES (don’t write over your data).</p>
 <p>basic <code>stringr</code> commands…</p>
+<pre class="r"><code>str_length </code></pre>
+<p>note most <code>stringr</code> function are a wrapper around <code>stringi</code></p>
 <pre class="r"><code>str_length(s3)</code></pre>
 <p>counts the number of characters matching arg</p>
 <pre class="r"><code>str_wrap(s3,1) 
@@ -568,10 +582,13 @@ dir()</code></pre>
 getwd()</code></pre>
 </div>
 </div>
-<div id="extensions" class="section level2">
-<h2>Extensions</h2>
-<p>“Scraping” data from the internet</p>
-<p><strong>ADDITIONAL RESOURCES:</strong> <a href="https://idc9.github.io/stor390/notes/web_scraping/DR_wrangling.html">more on web scraping with R</a> - (<code>scholar</code>)[<a href="https://cran.r-project.org/web/packages/scholar/scholar.pdf" class="uri">https://cran.r-project.org/web/packages/scholar/scholar.pdf</a>] - (<code>rvest</code>)[<a href="https://cran.r-project.org/web/packages/scholar/scholar.pdf" class="uri">https://cran.r-project.org/web/packages/scholar/scholar.pdf</a>]</p>
+<div id="closing-remarks" class="section level2">
+<h2>Closing Remarks</h2>
+<p>String manipulation is a powerful skill. If you like being ‘closer to your computer’ than working with text directly in your programs might be a good option. However, R is not really built for string manipulation, but <code>stringr</code> helps. If you can’t find the function you want in <code>stringr</code> look in <code>stringi</code>. Remember alot of the data/text problems you have might already have a package designed for it. So before you reinvent the wheel and write a complicated string manipulation code for running a bibliographic search, look around online for packages or code designed to solve your problem.</p>
+</div>
+<div id="extensions-for-string-manipulation" class="section level2">
+<h2>Extensions for string manipulation</h2>
+<p>“Scraping” data from the internet <a href="https://idc9.github.io/stor390/notes/web_scraping/DR_wrangling.html">web scraping with R</a> - (<code>scholar</code>)[<a href="https://cran.r-project.org/web/packages/scholar/scholar.pdf" class="uri">https://cran.r-project.org/web/packages/scholar/scholar.pdf</a>] - (<code>rvest</code>)[<a href="https://cran.r-project.org/web/packages/scholar/scholar.pdf" class="uri">https://cran.r-project.org/web/packages/scholar/scholar.pdf</a>]</p>
 <p>Find data in an excel file - <a href="stringr_Workbook1.xlsx">Workbook1</a> - <a href="Workbook2.xlsx">Workbook2</a></p>
 </div>
 

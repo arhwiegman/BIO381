@@ -12,7 +12,7 @@ knitr::opts_chunk$set(echo = TRUE,eval = FALSE)
 
 ## Tired of managing data by hand?
 
-Have you ever spent hours combing over data, copying and pasting, only to import into R and still turn an ERROR? Do you work with data from online resources, externally generated/mantained datasets, dataloggers, analytical instruments, etc...?Do you work with data in text form? Would you like to conduct an reproducable and exhaustive text/web search?
+Have you ever spent hours combing over data, copying and pasting, only to import into R and still turn an ERROR? Do you work with data from online resources, externally generated/mantained datasets, dataloggers, analytical instruments, etc...? Do you work with data in text form? Would you like to conduct a reproducable and exhaustive text/web search?
 
 *If you answered yes to any of these, then this lesson is for you!!!*
 
@@ -43,13 +43,13 @@ Enter `stringr`, a package that is well documented and consistently structured, 
 
 ## Resources for String Manipulation in R
 
-[`stringr` on the Tidyverse website](http://stringr.tidyverse.org/articles/stringr.html)
-[`stringr` cheat sheet](strings.pdf)
-[`stringr` github page](https://github.com/tidyverse/stringr)
-[RegEx cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
-Handling Strings in R by Gaston Sanchez [ebook](http://www.gastonsanchez.com/r4strings/character-sets.html) [github](https://github.com/gastonstat/r4strings/)
-R for Data Science by Garrett Grolemund and Hadley Wickham, [Chapter 14: Strings](http://r4ds.had.co.nz/strings.html)
-[CRAN `stringr` vingette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
+- [`stringr` on the Tidyverse website](http://stringr.tidyverse.org/articles/stringr.html)
+- [`stringr` cheat sheet](strings.pdf)
+- [`stringr` github page](https://github.com/tidyverse/stringr)
+- [R RegEx cheat sheet](https://www.rstudio.com/wp-content/uploads/2016/09/RegExCheatsheet.pdf)
+- Handling Strings in R by Gaston Sanchez   [ebook](http://www.gastonsanchez.com/r4strings/character-sets.html) [github](https://github.com/gastonstat/r4strings/)
+- R for Data Science by Garrett Grolemund and Hadley Wickham, [Chapter 14: Strings](http://r4ds.had.co.nz/strings.html)
+- [CRAN `stringr` vingette](https://cran.r-project.org/web/packages/stringr/vignettes/stringr.html)
 
 
 ## Lesson: 
@@ -144,11 +144,14 @@ set.seed(1) #for repeatable random numbers
 ```
 Detach non-base R packages
 ```{r}
+pkg.names 
 pkg.names() #I.2
+detach.pkgs 
 detach.pkgs() #I.4
 ```
 load a vector of packages 
 ```{r}
+require.pkgs 
 require.pkgs(c('stringr','magrittr','openxlsx'))#I.3
 pkg.names()
 ```
@@ -164,6 +167,7 @@ pkg.names()
 s1 <- pkg.names()
 s1
 # capture.output() of console as character vector 
+pkg.info
 s2 <- capture.output(pkg.info()) #I.1
 s2 
 
@@ -175,6 +179,10 @@ s3
 TIPS: Every function starts with `str_`. Most functions have logical names. ALWAYS PRINT TO THE CONSOLE FIRST (to test your search). ALWAYS STORE YOUR DATA IN TEMPORARY VARIABLES (don't write over your data).
 
 basic `stringr` commands... 
+```{r}
+str_length 
+```
+note most `stringr` function are a wrapper around `stringi` 
 ```{r}
 str_length(s3)
 ```
@@ -305,15 +313,17 @@ setwd(parent.dir()) #I.7
 getwd()
 ```
 
-## Extensions 
+## Closing Remarks
+
+String manipulation is a powerful skill. If you like being 'closer to your computer' than working with text directly in your programs might be a good option. However, R is not really built for string manipulation, but `stringr` helps. If you can't find the function you want in `stringr` look in `stringi`. Remember alot of the data/text problems you have might already have a package designed for it. So before you reinvent the wheel and write a complicated string manipulation code for running a bibliographic search, look around online for packages or code designed to solve your problem. 
+
+## Extensions for string manipulation 
 
 "Scraping" data from the internet
-
-**ADDITIONAL RESOURCES:**
-[more on web scraping with R](https://idc9.github.io/stor390/notes/web_scraping/DR_wrangling.html)
+[web scraping with R](https://idc9.github.io/stor390/notes/web_scraping/DR_wrangling.html)
 	- (`scholar`)[https://cran.r-project.org/web/packages/scholar/scholar.pdf]
   - (`rvest`)[https://cran.r-project.org/web/packages/scholar/scholar.pdf]
-  
-Find data in an excel file 
+
+Find data in an excel file
   - [Workbook1](stringr_Workbook1.xlsx)
   - [Workbook2](Workbook2.xlsx)
