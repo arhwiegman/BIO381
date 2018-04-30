@@ -32,11 +32,17 @@ Below I examine the effects of changing $S_{max}$ and $k$ in the Langmuir equati
 #        So - (mg kg^-1) minimum soil p concentration 
 # OUTPUT: S - vector
 #-------------------------------------------------------
-Langmuir <- function(C=0.1:100,k=0.5,Sm=1,So=0.1){
-  S <- (Sm*k*C)/(1+k*C) - So
+Langmuir <- function(C=NULL,
+                     k=0.5,
+                     Sm=1,
+                     So=0.01){
+  if (is.null(C)) C <- c(0.02,
+                         0.04*1.9^1:10,
+                         seq(0.01,10,length.out=5))
+  S <- (Sm*k*C)/(1+k*C) + So
 return(S)
 }
-head(Langmuir())
+Langmuir()
 
 ###################################################
 # FUNCTION: LangmuirPlot
@@ -49,12 +55,31 @@ head(Langmuir())
 #        So - (mg kg^-1) minimum soil p concentration 
 # OUTPUT: ggplot of langmuir equation
 #-------------------------------------------------
-LangmuirPlot <- function(C=seq(0.1,20,0.5),k=0.5,Sm=1,So=0.1){
-  plot(x=C,y=Langmuir(C,k,Sm,So),type="l",xlab="Dissolved P Conc. (mg/L)",ylab="S",ylim=c(0,10))
-  mtext(paste("Sm =", Sm," So =",So," k =",k),cex=0.7) 
-  return()
+LangmuirPlot <- function(C=NULL,
+                         k=0.5,
+                         Sm=1,
+                         So=0.1,
+                         Labels=FALSE){
+  if (is.null(C)) C <- 0.1:10
+   if (Labels==TRUE){
+    l <- c("S - Sorbed P (mg/kg)",
+           "C - Dissolved P Conc. (mg/L)")}else{
+             labs <- c(NULL,NULL)
+           }
+  plot(x=C,y=Langmuir(C,k,Sm,So),type="l",xlab=l[2],ylab=l[1],ylim=c(0,10),xlim=c(0,10))
+  mtext(paste("Sm =", Sm," So =",So," k =",k),cex=0.7)
 }
 LangmuirPlot()
+
+# loop to m
+par(mfrow=c(3,3))
+for (Sm in seq(1,5,length.out = 3)){
+  for (k in seq(0.1,2,length.out = 3)){
+    LangmuirPlot(k=k,Sm=Sm,Labels=FALSE)
+  }
+}
+
+
 
 ##############################################
 # FUNCTION: SA_output

@@ -10,13 +10,18 @@ output:
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
-## R Package Demos
+## R Package Demo
 
-[`stringr` lesson markdown](stringr_lesson/stringr_lesson.html)
+`stringr` lesson
 
-[`stringr` R script](stringr_lesson/stringr_demo.R)
+  - [html](stringr_lesson/stringr_lesson.html)
+  
+  - [R markdown](stringr_lesson/stringr_lesson.Rmd)
+  
+  - [R script](stringr_lesson/stringr_demo.R)
 
 ## Homework
+
 Homework 1: setup BIO381 webpage
 
 [Homework 2](Homework/homework02.html): Flow charts and structural equation models
