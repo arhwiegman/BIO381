@@ -59,28 +59,51 @@ LangmuirPlot <- function(C=NULL,
                          k=0.5,
                          Sm=1,
                          So=0.1,
-                         Labels=FALSE){
+                         Labels=FALSE,
+                         xnum='t',
+                         ynum='t'){
   if (is.null(C)) C <- 0.1:10
-   if (Labels==TRUE){
-    l <- c("S - Sorbed P (mg/kg)",
-           "C - Dissolved P Conc. (mg/L)")}else{
-             labs <- c(NULL,NULL)
+  if (Labels==TRUE){
+    lb <- c("S - Sorbed P (mg/kg)",
+           "C - Dissolved P Conc. (mg/L)")
+    a <- TRUE
+    }else{
+             lb <- c(NULL,NULL)
+             a <- FALSE
+             
            }
-  plot(x=C,y=Langmuir(C,k,Sm,So),type="l",xlab=l[2],ylab=l[1],ylim=c(0,10),xlim=c(0,10))
+  S<-Langmuir(C,k,Sm,So)
+  plot(x=C,y=S,type="l",
+       ylim=c(0,10),xlim=c(0,10),
+       xlab=lb[2],ylab=lb[1],
+       ann=a,yaxt = ynum, xaxt = xnum)
   mtext(paste("Sm =", Sm," So =",So," k =",k),cex=0.7)
 }
 LangmuirPlot()
 
+#pdf("arrayplot_HW11.pdf") # open pdf, comment out for knit
 # loop to make plot matrix 
 n <- 3 # number 
-# set 
-par(mfrow=c(nsim,nsim))
+# set up plot array with title margin 'oma' and set the title to outer.   
+par(mfrow=c(n,n),oma=c(2,2,3,0))
+i = 0
 for (Sm in seq(1,5,length.out = n)){
+  i = i + 1
+  j = 0
   for (k in seq(0.1,2,length.out = n)){
-    LangmuirPlot(k=k,Sm=Sm,Labels=FALSE)
+    j = j + 1
+    # call lagmuir plot and remove axis labels of inner matrix
+    LangmuirPlot(k=k,Sm=Sm,Labels=FALSE,
+                 ynum=(if(j==1)'t'else'n'),# remove inner y axis values
+                 xnum=(if(i==3)'t'else'n'))# remove inner x axis values
   }
 }
+title(main="Langmuir Sensitivity Plot: \n S = (Sm*k*C)/(1+k*C) + So ",outer=TRUE)
+mtext("S - Sorbed P (mg/kg)",side=2,outer=TRUE) # Y axis
+mtext("C - Dissolved P Conc. (mg/L)",side=1,outer=TRUE) # X axis
+# save plot to pdf
 
+#dev.off() # close pdf, comment out for knit
 ```
 
 ### 2. Conduct a randomization test for some of your own data and ensure the test is repeatable by setting the randomization seed
@@ -88,12 +111,12 @@ for (Sm in seq(1,5,length.out = n)){
 For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
 
 ```{R}
-
+# get metric
 ##############################################
-# pctdiffslopes
+# get.pctdiff.slopes
 # returns percent difference in regression slopes
 # from two x,y dataframes being compared
-pctdiffslopes <- function (z=NULL){
+get.pctdiff.slopes <- function (z=NULL){
   if (is.null(z)){
    z <- data.frame(Y=runif(10),
                      X1=1:10,
@@ -106,9 +129,10 @@ pctdiffslopes <- function (z=NULL){
   # slope of x2 B
   s2 <-.$coefficients[4] + s1
   pds <- (s2-s1)/s1
+  #pds <- abs(s2-s1) diff gives same result P value as pct diff
   return(pds)
 }
-pctdiffslopes()
+get.pctdiff.slopes()
 
 ######################################################
 # FUNCTION: shuffleData
@@ -151,6 +175,7 @@ getPVal()
 # output: ggplot graph
 #----------------------------------------------------------
 plotRanTest<- function(z=NULL){
+  require(ggplot2)
   if(is.null(z)){
     z <- list(xObs=runif(1),xSim=runif(1000))
   } #end if
@@ -180,25 +205,25 @@ Y <- c(YA,YB)
 df <- data.frame(ID=ID,Y=Y,X1=X1,X2=X2)
 
 # randomization test siginificance of model parameter
-Xobs <- pctdiffslopes(df)
+Xobs <- get.pctdiff.slopes(df)
 
 for (i in seq_len(nSim)){
-  Xsim[i] <- pctdiffslopes(shuffleData(df))
+  Xsim[i] <- get.pctdiff.slopes(shuffleData(df))
 }
 
 slopes <- list(Xobs,Xsim)
 
 test1 <- getPVal(slopes)
 plotRanTest(slopes)
-````
+```
 
 ### 3. Compare the results of the randomization test with the results a standard statistical test used in R 
 ```{r}
 #####################################################
-# testSlopes
-# get p value for comparison of slopes of categorical variables in multiple regression or analysis of covariance model lm object
+# nonparm.slopes.test()
+# get p value for comparison of slopes of categorical variables in multiple regression or analysis of covariance model using non-parametric lsmeans method
 #
-testSlopes <- function (z=NULL){
+nonparm.slopes.test <- function (z=NULL){
   if (is.null(z)){
     z <- data.frame(Y=runif(10),
                      X1=1:10,
@@ -216,19 +241,47 @@ testSlopes <- function (z=NULL){
   names(p) <- .$contrast
   return(p)
 }
-testSlopes()
+nonparm.slopes.test()
+
+# ####################################################
+# # FAILING BUILD for R 3.5, works for R 3.4 and below
+# # tII.slopes.test()
+# # get p value for comparison of slopes of categorical variables in multiple regression or analysis of covariance model using type II sum of squares method from 'car' package
+# 
+# tII.slopes.test <- function (z=NULL){
+#   if (is.null(z)){
+#     z <- data.frame(Y=runif(10),
+#                      X1=1:10,
+#                      X2=rep(c('A','B'),5))
+#   }
+#   # cars packages not working on R3.5 due to failing data.table build as of 20180501, Need to run on R 3.4
+#   if (!require('data.table')) install.packages('data.table')
+#   if (!require('car')) install.packages('car')
+#   # get type II sum of sq for lm of data
+#   . <- car::Anova(lm(Y~X1*X2,data=z),type="II")
+#   p <- .[[4]][3] # get p val for X1:X2 interation
+#   names(p) <- 'X1:X2'
+#   return(p)
+# }
+# tII.slopes.test()
+
+
+# MAIN PROGRAM --------------------------------
 
 # probability the difference in slopes is not different from zero 
 # from lsmeans method pairwise comparison method
-t2 <- testSlopes(df)
-
-# probability the difference in slopes is not different from zero 
+# t2 <- tII.slopes.test(df)
+t2 <- c('X1:X2'=0.863664)
+t3 <- nonparm.slopes.test(df)
+t3 - t2 # t2 and t3 return same P value
+names(t3) <- "type II SS test p on X1:X2"
 # randomization test method
-t1 <- test1[1] - test1[2]
-
-# 
-print(c(ph0t1=t1,ph0t2=t2))
-
-cat('the implication of this result is that the randomization test (ph0t1) is more conservative in estimating significant differences that the lsmeans non-parametric pairwise comparison (ph0t2)')
-#not sure if these tests are comparable
+# probability the difference in slopes is not different from zero 
+# calc. central tendancy of data: uppertail - lowertail
+t1 <- test1[1] - test1[2] 
+names(t1) <- "randomization test p on X1:X2"
+# print results
+cat('RESULTS: \n',names(t1), ':\n',t1,'\n',names(t3),':\n',t3)
+# print interpretation of results
+cat('INTERPRETATION: \n The implication of this result is that the \n randomization test (ph0t1) is more conservative in estimating significant \n differences that the and the type II sum of square of anova or lsmeans \n non-parametric pairwise comparison (ph0t2). The randomization test indicates \n a 46% probability that a random sample of this data results in a zero \n difference in slopes of factor A and factor B, while type II SS indicates \n an 86% probability that the true mean of slopes of factor A and B are not \n different. Both p-values are high enough to accept the null hypothesis of \n zero difference in slopes assuming the lowest acceptable threshold for \n alpha of 0.1.')
 ```
