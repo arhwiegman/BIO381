@@ -88,37 +88,147 @@ for (Sm in seq(1,5,length.out = n)){
 For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
 
 ```{R}
-library(spatstat)
-# Define polygon, length of transect and number of (points)transects
-data(letterR)
-mywindow <- letterR
-ltransect <- 0.3
-npoints <- 100
-s<- 1:npoints
-# Generate random origin points
-cosa <- runifpoint(npoints, w=mywindow)
-plot(cosa)
-##############################################
-# geoTransect 
-# takes 
-##############################################
-# geoTransect 
-# takes 
-#geoTransect <- function 
 
 ##############################################
-# FUNCTION: SA_output
-# Summary stats for spieces-area power function
-# INPUT: vector of predicted species richness
-# OUTPUT: list of max-min, coefficient of variation
-#--------------------------------------------------
-SA_output <- function(S=runif(1:10)){
-  sumStats <- list(SGain=max(S)-min(S), SCV=sd(S)/mean(S))
-  return(sumStats)
+# pctdiffslopes
+# returns percent difference in regression slopes
+# from two x,y dataframes being compared
+pctdiffslopes <- function (z=NULL){
+  if (is.null(z)){
+   z <- data.frame(Y=runif(10),
+                     X1=1:10,
+                     X2=rep(c('A','B'),5))
+  }
+  # Y = b0 + b1*X1 + b2*X2B + b3*X1*X2B
+  . <- lm(Y~X1*X2,z)
+  # slope of x2 A
+  s1 <-.$coefficients[2]
+  # slope of x2 B
+  s2 <-.$coefficients[4] + s1
+  pds <- (s2-s1)/s1
+  return(pds)
 }
-SA_output()
+pctdiffslopes()
 
-```
+######################################################
+# FUNCTION: shuffleData
+# randomize the position of x and y values
+# input: 3+ colunm data frame for regression (ID, yVar, xVar, x etc..)
+# output: 3+ column data frame 
+#----------------------------------------------------------
+shuffleData <- function(z=NULL){
+  if(is.null(z)){
+    xVar <- 1:20
+    yVar <- xVar + 10*rnorm(20)
+    z <- data.frame(ID=seq_along(xVar),yVar,xVar)
+  }
+  z[,2] <- sample(z[,2])
+  z[,3] <- sample(z[,3])
+  return(z)
+}
+shuffleData()
 
+###########################################################
+# FUNCTION: getPVal
+# calculate p value for observed, simulated data
+# input: list containing observed metric and vector of simulated data
+# output: lower, upper tail probability
+#----------------------------------------------------------
+getPVal <- function(z=NULL){
+  if(is.null(z)){
+    z <- list(xObs=runif(1),xSim=runif(1000))
+  } #end if
+  pLower <- mean(z[[2]]<=z[[1]]) #the mean of a boolean vector returns proportion true
+  pUpper <- mean(z[[2]]>=z[[1]])
+  return(c(pL=pLower,pU=pUpper))
+}
+getPVal()
+
+###########################################################
+# FUNCTION: plotRanTest
+# ggplot graph 
+# input: list containing observed metric and vector of simulated metrix 
+# output: ggplot graph
+#----------------------------------------------------------
+plotRanTest<- function(z=NULL){
+  if(is.null(z)){
+    z <- list(xObs=runif(1),xSim=runif(1000))
+  } #end if
+  df <- data.frame(ID=seq_along(z[[2]]),simX=z[[2]])
+  p1 <- ggplot(data=df,mapping=aes(x=simX))
+  p1 + geom_histogram(mapping=aes(fill=I("goldenrod"),color=I("black"))) + geom_vline(aes(xintercept=z[[1]],col="blue"))
+}
+plotRanTest()
+
+# MAIN PROGRAM----------------------------------
+set.seed(10235)
+#global variables
+nSim <- 1000
+Xsim <- rep(NA,nSim) # will hold simulated slopes
+
+# Raw Data in 'wide' format
+YA <- c(1659,649,650,377,1825,1924)
+YB <- c(965,1855,1972,493,2081,1439)
+#YC <- c(3172,6090,5888,4348,13874,9348)
+X <- c(4900,6800,6700,5700,13700,10500)
+ID <- seq_along(X)
+# Convert data into 'long' format
+X1 <- rep(X,2) 
+X2 <- c(rep("A",6),rep("B",6))
+Y <- c(YA,YB)
+# Make data frame with 'long' format data
+df <- data.frame(ID=ID,Y=Y,X1=X1,X2=X2)
+
+# randomization test siginificance of model parameter
+Xobs <- pctdiffslopes(df)
+
+for (i in seq_len(nSim)){
+  Xsim[i] <- pctdiffslopes(shuffleData(df))
+}
+
+slopes <- list(Xobs,Xsim)
+
+test1 <- getPVal(slopes)
+plotRanTest(slopes)
+````
 
 ### 3. Compare the results of the randomization test with the results a standard statistical test used in R 
+```{r}
+#####################################################
+# testSlopes
+# get p value for comparison of slopes of categorical variables in multiple regression or analysis of covariance model lm object
+#
+testSlopes <- function (z=NULL){
+  if (is.null(z)){
+    z <- data.frame(Y=runif(10),
+                     X1=1:10,
+                     X2=rep(c('A','B'),5))
+  }
+  if (!require("lsmeans")) install.packages("lsmeans")
+  # Compare slopes using lsmeans package
+  # get slopes and confidence intervals
+  . <- lm(Y~X1*X2,data=z)
+  . <- lsmeans::lstrends(., "X2", var="X1")
+  # Compare slopes and generate p-value for comparisons
+  . <- pairs(.)
+  . <- summary(.)
+  p <- .$p.value
+  names(p) <- .$contrast
+  return(p)
+}
+testSlopes()
+
+# probability the difference in slopes is not different from zero 
+# from lsmeans method pairwise comparison method
+t2 <- testSlopes(df)
+
+# probability the difference in slopes is not different from zero 
+# randomization test method
+t1 <- test1[1] - test1[2]
+
+# 
+print(c(ph0t1=t1,ph0t2=t2))
+
+cat('the implication of this result is that the randomization test (ph0t1) is more conservative in estimating significant differences that the lsmeans non-parametric pairwise comparison (ph0t2)')
+#not sure if these tests are comparable
+```
