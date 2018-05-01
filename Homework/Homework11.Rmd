@@ -71,15 +71,40 @@ LangmuirPlot <- function(C=NULL,
 }
 LangmuirPlot()
 
-# loop to m
-par(mfrow=c(3,3))
-for (Sm in seq(1,5,length.out = 3)){
-  for (k in seq(0.1,2,length.out = 3)){
+# loop to make plot matrix 
+n <- 3 # number 
+# set 
+par(mfrow=c(nsim,nsim))
+for (Sm in seq(1,5,length.out = n)){
+  for (k in seq(0.1,2,length.out = n)){
     LangmuirPlot(k=k,Sm=Sm,Labels=FALSE)
   }
 }
 
+```
 
+### 2. Conduct a randomization test for some of your own data and ensure the test is repeatable by setting the randomization seed
+
+For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
+
+```{R}
+library(spatstat)
+# Define polygon, length of transect and number of (points)transects
+data(letterR)
+mywindow <- letterR
+ltransect <- 0.3
+npoints <- 100
+s<- 1:npoints
+# Generate random origin points
+cosa <- runifpoint(npoints, w=mywindow)
+plot(cosa)
+##############################################
+# geoTransect 
+# takes 
+##############################################
+# geoTransect 
+# takes 
+#geoTransect <- function 
 
 ##############################################
 # FUNCTION: SA_output
@@ -92,14 +117,6 @@ SA_output <- function(S=runif(1:10)){
   return(sumStats)
 }
 SA_output()
-
-```
-
-### 2. Conduct a randomization test for some of your own data and ensure the test is repeatable by setting the randomization seed
-
-For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
-
-```{R}
 
 ```
 

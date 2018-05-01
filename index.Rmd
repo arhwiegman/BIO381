@@ -28,7 +28,7 @@ Homework 1: setup BIO381 webpage
 
 [Homework 3](Homework/homework03.pdf): Beamer presentation
 
-[Homework 4](Homework/homework04.html): Arrithmetic and Vector operations in R
+[Homework 4](Homework/homework04.html): Arrithmetic and vector operations in R
 
 [Homework 5](Homework/homework05.html): Regular expressions
 
