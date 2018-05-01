@@ -40,7 +40,7 @@ Homework 1: setup BIO381 webpage
     
 [Homework 10](Homework/homework10.html): Batch processing of files
 
-[Homework 11](Homework/homework11.html): Visualizing mathematical models
+[Homework 11](Homework/Homework11.html): Visualizing mathematical models and randomization tests
     
 [Homework 12](Homework/homework12.html): Advanced plotting with ggplot2 and patchwork
 
