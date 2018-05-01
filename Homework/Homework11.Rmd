@@ -108,7 +108,7 @@ mtext("C - Dissolved P Conc. (mg/L)",side=1,outer=TRUE) # X axis
 
 ### 2. Conduct a randomization test for some of your own data and ensure the test is repeatable by setting the randomization seed
 
-For this exercise I will use data from the _______ (CRMS or ACOE Navigation Data Center). 
+For this exercise I will use data from laboratory extraction of phosphorus `Y` using two different methods (`X2=A` and `X2=B`) verses Total Phosphorus (`X1`), and I will compare the slopes of the phosphorus extracted phosphorus from method A and method B. I am testing the null hypthosis that difference in slopes is equal to zero. This is a small sample size, n=6 for each method. So assumptions of normality with respect to Y and repect to model residuals may be vialated. Therefore a randomization test or nonparametric approach may be better suited to test the null hypothesis. Results are plotted below.
 
 ```{R}
 # get metric
@@ -218,6 +218,8 @@ plotRanTest(slopes)
 ```
 
 ### 3. Compare the results of the randomization test with the results a standard statistical test used in R 
+
+The conventional statistic I am using is the type II sum of squares for the model term X1:X2 which adjusts the slope for the based on the value of X2B, if this parameter is significant p < alpha then the slopes are significantly different. The results and interpretation between the test statistic from the randomization test on difference between slopes and and the type II sum of squares for the X1:X2 interaction are given below as a console print out.
 ```{r}
 #####################################################
 # nonparm.slopes.test()
