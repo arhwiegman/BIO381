@@ -13,24 +13,8 @@ library(multcompView)
 
 ## R Markdown
 
-This R markdown evaluates ggplot options for random data reflecting a block design with four treatment levels in each block. In this markdown I also build a function to plot labels from a tukey honest significant difference table. 
+This R markdown evaluates ggplot options for random data reflectig a block design with six treatment groups in each block. In this markdown I also build a function to plot resuls from a tukey honest significant difference post hoc test. 
 
-dataframe:
-
-|ID | Block (B) | Treatment1 | Recipe (R) | Yield (Y)|
-|---|---|---|---|
-|1|1|1|1|-|
-|1|1|1|2|-|
-|...|...|...|...|
-|1|1|1|n|-|
-|1|1|2|1|-|
-|...|...|...|...|
-|1|1|2|n|-|
-
-
-`lm(Y~B*D*R,data=dataframe)`
-- Saturday
-	- 
 
 ```{r}
 # Define Functions------------------------------------

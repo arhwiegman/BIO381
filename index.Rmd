@@ -44,9 +44,6 @@ Homework 1: setup BIO381 webpage
     
 [Homework 12](Homework/homework12.html): Advanced plotting with ggplot2 and patchwork
 
-  - STATUS: incomplete,20180426
-  
-    - Need to select dataset to make plots with
 
 ## Info
 
