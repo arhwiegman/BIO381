@@ -1,0 +1,49 @@
+---
+title: "Map of OtterCreek Sites"
+author: "Adrian Wiegman"
+date: "May 17, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+
+```{r}
+library(rgdal)
+# FUNCTIONS-------------------------------
+# leaflet.satellite.poly ######################################
+# places center at UVM and adds polygons to satallite imagery
+# input:
+#   poly - spatial polygon dataframe: spdf
+#   field - a polygon attribute: spdf$id 
+leaflet.satellite.poly<- function(poly=NULL,field=NULL){
+  library("leaflet")
+  # Reproject your data to longlat
+  poly <- sp::spTransform(poly, CRS("+proj=longlat +datum=WGS84"))
+  # set x and y center of map to bbox average
+  y <- (bbox(poly)[2,1] + bbox(poly)[2,2])/2
+  x <- (bbox(poly)[1,1] + bbox(poly)[1,2])/2
+  #Basic leaflet command with `pipe` %>% structure 
+  leaflet(poly) %>%
+    #addProviderTiles(providers$OpenStreetMap.DE) %>%
+    addProviderTiles(providers$Esri.WorldImagery) %>%
+    #addProviderTiles(providers$NASAGIBS.ModisTerraBands367CR) %>%
+    setView(lng =x,lat=y, zoom = 12) %>%
+    #fitBounds(lng1=bbox[1], lat1=bbox[1], lng2=bbox[1], lat2=bbox[1]) %>%
+    #addPolygons(data=geodf.1,weight=5,col = 'red') %>%
+    addPolygons(weight=1, popup=field)
+}
+# SUBSET NRCS SITES FOR OTTER CREEK ------------------------------------------------------
+setwd("C:/Users/Adria/Documents/UVM-research/LCB-Geospatial/Otter-analysis/")
+# site id's for otter creek
+nrcs_ottersites <- readOGR("C:/Users/Adria/Documents/UVM-research/LCB-Geospatial/Otter-analysis/nrcs_wetland_easemts_041618_otter.dbf")
+fld_labels <- paste('id:',nrcs_ottersites$id,
+                    ',  Year_rst:',nrcs_ottersites$yr_rst,
+                    ',  lat:',nrcs_ottersites$NEST_LATIT,
+                    ',  lon:',nrcs_ottersites$NEST_LONGI,
+                    ',  Area(ac):',nrcs_ottersites$NEST_Acres)
+# Make leaflet plot with field 
+leaflet.satellite.poly(nrcs_ottersites,fld_labels)
+```
